@@ -77,7 +77,7 @@ const strip = (o) => { const c = { ...o }; delete c._row; return c; };
 let sourceCache = null;
 async function sourceCheck(fetchImpl, nowMs) {
   if (sourceCache && nowMs - sourceCache.at < 10 * 60 * 1000) return sourceCache.value;
-  const { closes, errors } = await fetchCloses(fetchImpl);
+  const { closes, errors } = await fetchCloses(fetchImpl, new Set(['0050', '6488']));
   const value = { count: Object.keys(closes).length, otcCount: Object.values(closes).filter((c) => c.market === '上櫃').length, sample: closes['0050'] || null, otcSample: closes['00679B'] || closes['6488'] || null, errors };
   sourceCache = { at: nowMs, value };
   return value;
@@ -266,7 +266,7 @@ export async function updatePrices(env, deps) {
   const D = parseAll(await sheets.readAll());
   const codes = new Set([...D.trades.map((t) => String(t.code)), ...D.cash.filter((c) => c.code).map((c) => String(c.code))]);
   if (!codes.size) return { updated: 0, errors: [] };
-  const { closes, errors } = await fetchCloses(fetchImpl);
+  const { closes, errors } = await fetchCloses(fetchImpl, codes);
   const stamp = taipei(now()).stamp;
   let updated = 0;
   for (const code of codes) {

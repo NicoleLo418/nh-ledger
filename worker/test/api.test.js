@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { handle, updatePrices } from '../src/app.js';
 import { FakeSheets } from '../src/sheets.js';
 import { pinHash } from '../src/core.js';
-import { parseTwse, parseTpex, parseTpexOpenApi, rocToIso, fetchCloses } from '../src/prices.js';
+import { parseTwse, parseTpex, parseTpexOpenApi, parseMis, rocToIso, fetchCloses } from '../src/prices.js';
 
 const ORIGIN = 'https://nicole.github.io';
 const CH = '2000000001';
@@ -271,4 +271,20 @@ test('收盤價：櫃買中心 OpenAPI 解析；OpenAPI 失敗時改用網站資
   assert.deepEqual(r.errors, []);
   const bothFail = async (url) => url.includes('twse') ? new Response('[]') : new Response('', { status: 403 });
   assert.equal((await fetchCloses(bothFail)).errors.length, 1);
+});
+
+test('收盤價：行情系統補上櫃股票與較新的價格，只查持有過的代號', async () => {
+  assert.deepEqual(parseMis({ msgArray: [{ c: '6488', n: '環球晶', z: '415.0', d: '20261023', ex: 'otc' }, { c: '0050', z: '-', d: '20261023', ex: 'tse' }] }), { 6488: { close: 415, date: '2026-10-23', market: '上櫃', name: '環球晶' } });
+  assert.throws(() => parseMis({ foo: 1 }));
+  let misUrl = '';
+  const f = async (url) => {
+    if (url.includes('mis.twse')) { misUrl = url; return new Response(JSON.stringify({ msgArray: [{ c: '0050', n: '元大台灣50', z: '107.50', d: '20261023', ex: 'tse' }, { c: '6488', n: '環球晶', z: '415', d: '20261023', ex: 'otc' }] })); }
+    if (url.includes('openapi.twse')) return new Response(JSON.stringify([{ Date: '1151022', Code: '0050', Name: '元大台灣50', ClosingPrice: '106.90' }, { Date: '1151022', Code: '2330', Name: '台積電', ClosingPrice: '2385' }]));
+    return new Response('', { status: 403 });
+  };
+  const r = await fetchCloses(f, new Set(['0050', '6488']));
+  assert.equal(r.closes['0050'].close, 107.5);      // 行情系統日期較新 → 用它
+  assert.equal(r.closes['6488'].market, '上櫃');     // 櫃買中心擋住時靠行情系統
+  assert.equal(r.closes['2330'].close, 2385);       // 其他股票照用證交所
+  assert.ok(decodeURIComponent(misUrl).includes('tse_0050.tw|otc_0050.tw|tse_6488.tw|otc_6488.tw'));
 });

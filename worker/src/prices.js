@@ -1,6 +1,7 @@
 // Official daily closing prices: TWSE (上市) and TPEx (上櫃).
 export const TWSE_URL = 'https://openapi.twse.com.tw/v1/exchangeReport/STOCK_DAY_ALL';
 export const TPEX_OPENAPI_URL = 'https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes';
+export const MIS_URL = 'https://mis.twse.com.tw/stock/api/getStockInfo.jsp';
 export const TPEX_URL = 'https://www.tpex.org.tw/www/zh-tw/afterTrading/otc?type=EW&response=json';
 
 export function rocToIso(s) {
@@ -57,8 +58,30 @@ export function parseTpexOpenApi(rows) {
   return out;
 }
 
+// 證交所行情系統（上市、上櫃都有）：只查指定代號；收盤後 z 就是當日收盤價
+export function parseMis(resp) {
+  if (!resp || !Array.isArray(resp.msgArray)) throw new Error('行情系統回傳格式改變');
+  const out = {};
+  for (const r of resp.msgArray) {
+    if (!r || !r.c) continue;
+    const close = parseFloat(String(r.z || '').replace(/,/g, ''));
+    if (!(close > 0)) continue;
+    const d = String(r.d || '');
+    out[String(r.c).trim()] = { close, date: /^\d{8}$/.test(d) ? `${d.slice(0, 4)}-${d.slice(4, 6)}-${d.slice(6, 8)}` : '', market: r.ex === 'otc' ? '上櫃' : '上市', name: String(r.n || '').trim() };
+  }
+  return out;
+}
+export async function fetchMis(codes, fetchImpl = fetch) {
+  const list = [...codes].filter((c) => /^[0-9A-Z]{4,6}$/.test(c)).slice(0, 40);
+  if (!list.length) return {};
+  const exch = list.flatMap((c) => [`tse_${c}.tw`, `otc_${c}.tw`]).join('|');
+  const r = await fetchImpl(`${MIS_URL}?ex_ch=${encodeURIComponent(exch)}&json=1&delay=0`, { headers: { 'user-agent': 'Mozilla/5.0 (nh-ledger daily close)', accept: 'application/json', referer: 'https://mis.twse.com.tw/stock/index.jsp' } });
+  if (!r.ok) throw new Error(`行情系統 ${r.status}`);
+  return parseMis(await r.json());
+}
+
 // Fetch both markets; one source failing does not block the other.
-export async function fetchCloses(fetchImpl = fetch) {
+export async function fetchCloses(fetchImpl = fetch, codes = null) {
   const headers = { 'user-agent': 'Mozilla/5.0 (nh-ledger daily close)', accept: 'application/json' };
   const result = {}, errors = [];
   try { const r = await fetchImpl(TWSE_URL, { headers }); if (!r.ok) throw new Error(`證交所 ${r.status}`); Object.assign(result, parseTwse(await r.json())); } catch (e) { errors.push(String(e.message || e)); }
@@ -69,6 +92,13 @@ export async function fetchCloses(fetchImpl = fetch) {
     tpexErr = String(e.message || e).slice(0, 200);
     try { const r = await fetchImpl(TPEX_URL, { headers, redirect: 'manual' }); if (!r.ok) throw new Error(`櫃買中心網站 ${r.status}`); Object.assign(result, parseTpex(await r.json())); }
     catch (e2) { errors.push(tpexErr + '；' + String(e2.message || e2).slice(0, 200)); }
+  }
+  // 有指定代號時，再用行情系統補上缺的或比較新的價格（櫃買中心擋 Cloudflare 時靠這個）
+  if (codes && codes.size) {
+    try {
+      const mis = await fetchMis(codes, fetchImpl);
+      for (const [code, c] of Object.entries(mis)) if (!result[code] || (c.date && c.date > (result[code].date || ''))) result[code] = c;
+    } catch (e) { errors.push(String(e.message || e).slice(0, 200)); }
   }
   return { closes: result, errors };
 }
