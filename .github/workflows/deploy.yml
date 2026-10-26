@@ -33,12 +33,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: 部署 Cloudflare Worker
+        id: wrangler
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           workingDirectory: worker
           command: deploy
+      - name: 回報 Worker 網址
+        run: echo "::notice title=Worker 網址::${{ steps.wrangler.outputs.deployment-url }}"
 
   deploy-pages:
     needs: test
@@ -60,13 +63,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 部署後檢查（網頁、後端、收盤價來源）
+        shell: bash
         run: |
           sleep 20
-          echo "== 網頁 =="
-          curl -s -o page.html -w "HTTP %{http_code}\n" https://nicolelo418.github.io/nh-ledger/
-          grep -o "<title>[^<]*</title>" page.html || (echo "網頁內容不對" && exit 1)
-          echo "== 後端 =="
-          curl -s -w "\nHTTP %{http_code}\n" "https://nh-ledger-api.nicole-n.workers.dev/health?sources=1"
-          echo "== 未登入呼叫帳本（應該是 401）=="
-          code=$(curl -s -o /dev/null -w "%{http_code}" https://nh-ledger-api.nicole-n.workers.dev/api/ledger)
-          echo "HTTP $code"; test "$code" = "401"
+          fail=0
+          p=$(curl -s -o page.html -w "%{http_code}" https://nicolelo418.github.io/nh-ledger/ || echo "curl錯誤$?")
+          t=$(grep -o "<title>[^<]*</title>" page.html 2>/dev/null)
+          echo "::notice title=網頁::HTTP $p $t"
+          [ "$p" = "200" ] || fail=1
+          h=$(curl -s -m 60 -w " HTTP %{http_code}" "https://nh-ledger-api.nicole-n.workers.dev/health?sources=1" || echo "curl錯誤$?")
+          echo "::notice title=後端健康檢查::$h"
+          c=$(curl -s -o /dev/null -w "%{http_code}" https://nh-ledger-api.nicole-n.workers.dev/api/ledger || echo "curl錯誤$?")
+          echo "::notice title=未登入讀帳本（應為401）::$c"
+          [ "$c" = "401" ] || fail=1
+          exit $fail
