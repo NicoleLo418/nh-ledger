@@ -309,3 +309,17 @@ test('健康檢查錯誤訊息：只回報類別，不洩漏帳號資訊', async
   assert.equal(safeSheetError(new Error('Google 登入失敗（400 invalid_grant）')), 'Google 登入失敗（400 invalid_grant）');
   assert.ok(!safeSheetError(new Error('boom nh@p.iam.gserviceaccount.com')).includes('@'));
 });
+
+test('試算表連線：fetch 不能被當成物件方法呼叫（Cloudflare 會丟 Illegal invocation）', async () => {
+  const { GoogleSheets } = await import('../src/sheets.js');
+  const { generateKeyPairSync } = await import('node:crypto');
+  const pem = generateKeyPairSync('rsa', { modulusLength: 2048 }).privateKey.export({ type: 'pkcs8', format: 'pem' });
+  const strictFetch = function (url) {
+    if (this !== undefined) throw new TypeError('Illegal invocation');
+    if (url.includes('oauth2')) return Promise.resolve(new Response(JSON.stringify({ access_token: 't', expires_in: 3600 })));
+    return Promise.resolve(new Response(JSON.stringify({ valueRanges: [] })));
+  };
+  const g = new GoogleSheets({ SHEET_ID: 'x', GOOGLE_SA_JSON: JSON.stringify({ client_email: 'a@b', private_key: pem }) }, strictFetch);
+  const all = await g.readAll();
+  assert.ok(Array.isArray(all.trades));
+});

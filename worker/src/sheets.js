@@ -26,7 +26,7 @@ const q = (name) => `'${name}'`;
 const tokenCache = { value: '', exp: 0 };
 
 export class GoogleSheets {
-  constructor(env, fetchImpl = fetch) { this.env = env; this.fetch = fetchImpl; this.id = env.SHEET_ID; }
+  constructor(env, fetchImpl = (...a) => fetch(...a)) { this.env = env; this.fetch = (...a) => fetchImpl(...a); this.id = env.SHEET_ID; }
 
   async token() {
     const now = Math.floor(Date.now() / 1000);
