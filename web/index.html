@@ -1,0 +1,1270 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>財富自由的路上NH</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Huninn&family=Noto+Sans+TC:wght@400;500;700&family=Nunito:wght@600;700;800&display=swap">
+<style>
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0}
+[hidden]{display:none!important}
+img{max-width:100%}
+.mrow{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:10px}
+.mrow .mi{display:flex;flex-direction:column;min-width:0}
+.mrow .mi span{font-size:12.5px;color:var(--muted)}
+.mrow .ma{display:flex;gap:8px;align-items:center}
+.mrow .ma input{width:9em}
+/* Layout: phone-first single column, hill hero on top, fixed bottom tab bar; desktop centers a 640px column. */
+:root{
+  --bg:#EAF3F1; --surface:#FFFFFF; --surface2:#F2F8F6; --ink:#1F3A3D; --muted:#5D7779; --line:#D2E2DF;
+  --accent:#E3A22F; --accent-ink:#4A3000; --leaf:#3F8F62;
+  --up:#D23F35; --down:#24895A;
+  --sky:#D3EAF4; --sun:#F6C453; --cloud:#FFFFFF; --hill:#8CC79A; --hill2:#B8DDB8; --trail:#F7FBF6;
+  --house:#FFF3DC; --roof:#E07A5F; --door:#9C6B4A; --flag:#E3A22F; --flag-ink:#4A3000;
+  --p1:#E9696B; --p2:#4F8ED6; --skin:#FFD9B8; --eye:#2A2A2A; --blush:#F6A0A0;
+  --shadow:0 1px 2px rgba(31,58,61,.06),0 6px 18px rgba(31,58,61,.07);
+  --font-display:'Huninn','Noto Sans TC',ui-rounded,system-ui,sans-serif;
+  --font-body:'Noto Sans TC',system-ui,-apple-system,'PingFang TC','Microsoft JhengHei',sans-serif;
+  --font-num:'Nunito',ui-rounded,system-ui,sans-serif;
+  --r:16px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#10201F; --surface:#172A29; --surface2:#1D3432; --ink:#E3EFED; --muted:#93ADAB; --line:#2A4542;
+  --accent:#F0B54A; --accent-ink:#2A1C00; --leaf:#6CC08E; --up:#FF6E62; --down:#4CC487;
+  --sky:#1B3450; --sun:#F2C35B; --cloud:#2B4664; --hill:#2F6A48; --hill2:#244E3A; --trail:#78A98A;
+  --house:#F3E4C6; --roof:#D9735A; --door:#8A5C3E; --flag:#F0B54A; --flag-ink:#2A1C00;
+  --p1:#F07B7D; --p2:#68A3E6; --skin:#FFD9B8; --eye:#1A1A1A; --blush:#F6A0A0;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#10201F; --surface:#172A29; --surface2:#1D3432; --ink:#E3EFED; --muted:#93ADAB; --line:#2A4542;
+  --accent:#F0B54A; --accent-ink:#2A1C00; --leaf:#6CC08E; --up:#FF6E62; --down:#4CC487;
+  --sky:#1B3450; --sun:#F2C35B; --cloud:#2B4664; --hill:#2F6A48; --hill2:#244E3A; --trail:#78A98A;
+  --house:#F3E4C6; --roof:#D9735A; --door:#8A5C3E; --flag:#F0B54A; --flag-ink:#2A1C00;
+  --p1:#F07B7D; --p2:#68A3E6; --skin:#FFD9B8; --eye:#1A1A1A; --blush:#F6A0A0;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25); color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:15px;line-height:1.55;-webkit-tap-highlight-color:transparent}
+.num{font-family:var(--font-num);font-variant-numeric:tabular-nums;font-weight:700}
+.up{color:var(--up)} .down{color:var(--down)} .muted{color:var(--muted)}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2.5px solid var(--accent);outline-offset:2px;border-radius:8px}
+
+.wrap{max-width:640px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:12px calc(96px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:16px}
+header.top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{font-family:var(--font-display);font-size:20px;letter-spacing:.02em;line-height:1.2}
+.brand small{display:block;font-family:var(--font-body);font-size:12px;color:var(--muted);letter-spacing:.04em}
+.iconbtn{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:7px 12px;font-size:13px;display:inline-flex;gap:6px;align-items:center}
+
+.card{background:var(--surface);border-radius:var(--r);box-shadow:var(--shadow);padding:16px}
+.label{font-size:12px;letter-spacing:.06em;color:var(--muted)}
+h2.sec{font-family:var(--font-display);font-size:17px;margin:4px 2px 0;font-weight:400}
+
+/* hill hero: fixed natural-light scene, recolored by the viewer's local time, independent of theme */
+.hill{padding:0;overflow:hidden;position:relative}
+.scene{display:block;width:100%;height:auto}
+.timechip{position:absolute;top:10px;left:10px;font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:999px;background:rgba(255,255,255,.75);color:#24363A;pointer-events:none;font-variant-numeric:tabular-nums}
+.hill .cap{padding:12px 16px 16px;display:flex;flex-direction:column;gap:10px}
+.progline{display:flex;flex-wrap:wrap;gap:4px 16px;align-items:baseline;justify-content:space-between}
+.hill .big{font-family:var(--font-display);font-size:22px}
+.hill .big b{font-family:var(--font-num);font-weight:800;font-size:28px;color:var(--leaf)}
+.pace{display:inline-flex;align-items:center;gap:6px;font-size:13px;padding:3px 10px;border-radius:999px;background:var(--surface2)}
+.pace i{width:8px;height:8px;border-radius:50%;display:inline-block}
+.quote{display:flex;gap:10px;align-items:flex-start;background:var(--surface2);border-radius:14px;padding:10px 12px;border:0;text-align:left;width:100%}
+.quote .av{width:28px;height:28px;font-size:12px}
+.quote p{margin:0;font-size:14.5px;line-height:1.6;text-wrap:pretty}
+.quote small{display:block;color:var(--muted);font-size:11.5px;letter-spacing:.04em}
+.trailbed{fill:none;stroke:#E8DAB6;stroke-width:4.6;stroke-linecap:round;stroke-linejoin:round}
+.trailedge{fill:none;stroke:#B79E70;stroke-width:.7;stroke-dasharray:1.5 3.5;stroke-linecap:round}
+.sign .board{fill:#C99B62;stroke:#8A6239;stroke-width:.7}
+.sign.done{cursor:pointer}
+.sign.done .board{fill:#F3C559;stroke:#B07D1E}
+.sign text{font-family:var(--font-num);font-weight:800;font-size:6.4px;fill:#3B2715}
+.sign .check{display:none}
+.sign.done .check{display:inline}
+.flagtxt{font-family:var(--font-num);font-weight:800;font-size:7.2px;fill:#4A3000}
+.tagtxt{font-family:var(--font-body);font-weight:700;font-size:5.6px;fill:#24363A}
+.mover{transition:transform 1.8s cubic-bezier(.3,.8,.3,1)}
+.walk .leg{transform-box:fill-box;transform-origin:50% 0;animation:leg .8s ease-in-out infinite alternate}
+.walk .leg.b{animation-delay:-.8s}
+@keyframes leg{from{transform:rotate(24deg)}to{transform:rotate(-24deg)}}
+.walk .torso{animation:step .4s ease-in-out infinite alternate}
+@keyframes step{from{transform:translateY(0)}to{transform:translateY(-.8px)}}
+.walk .arm{transform-box:fill-box;transform-origin:0 0;animation:arm .8s ease-in-out infinite alternate}
+@keyframes arm{from{transform:rotate(-16deg)}to{transform:rotate(16deg)}}
+.cheer .hk{animation:jump .42s ease-out infinite alternate}
+@keyframes jump{from{transform:translateY(0)}to{transform:translateY(-5px)}}
+.cheer .arm{transform-box:fill-box;transform-origin:0 0;transform:rotate(-130deg)}
+.smoke circle{animation:smoke 4.5s ease-out infinite;opacity:0}
+.smoke circle:nth-child(2){animation-delay:1.5s}.smoke circle:nth-child(3){animation-delay:3s}
+@keyframes smoke{0%{transform:translate(0,0) scale(.5);opacity:0}15%{opacity:.7}100%{transform:translate(7px,-18px) scale(1.8);opacity:0}}
+.flagwave{transform-box:fill-box;transform-origin:0 50%;animation:wave 2.6s ease-in-out infinite}
+@keyframes wave{50%{transform:skewY(-5deg) scaleX(.93)}}
+.cloudrift{animation:drift 70s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translateX(26px)}}
+.twinkle{animation:tw 2.8s ease-in-out infinite alternate}
+@keyframes tw{to{opacity:.25}}
+.confetti rect{animation:fall 2.8s cubic-bezier(.25,.6,.45,1) forwards}
+@keyframes fall{from{transform:translate(0,0) rotate(0)}to{transform:translate(var(--dx),260px) rotate(var(--rot))}}
+.celebrate{position:absolute;left:50%;top:40%;transform:translate(-50%,-50%) scale(.6);opacity:0;background:var(--surface);color:var(--ink);padding:12px 20px;border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.22);text-align:center;pointer-events:none;transition:opacity .35s,transform .45s cubic-bezier(.3,1.6,.5,1);min-width:180px}
+.celebrate.show{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.celebrate b{display:block;font-family:var(--font-display);font-weight:400;font-size:24px;color:var(--leaf)}
+.celebrate span{font-size:13px;color:var(--muted)}
+@media (prefers-reduced-motion:reduce){.mover{transition:none}.walk .leg,.walk .torso,.walk .arm,.cheer .hk,.smoke circle,.flagwave,.cloudrift,.twinkle,.confetti rect{animation:none}}
+.remind{display:flex;gap:10px;align-items:center;background:color-mix(in srgb,var(--accent) 20%,var(--surface));border-radius:14px;padding:12px 14px}
+.remind div{flex:1;min-width:0}
+.remind b{display:block}
+.remind span{font-size:13px;color:var(--muted)}
+.avail{background:var(--surface2);border-radius:12px;padding:10px 12px}
+.avail .v{font-size:24px;font-weight:800;color:var(--leaf)}
+.warn{color:var(--up);font-weight:700}
+.syncbar{display:flex;gap:10px;align-items:center;background:var(--surface);border-radius:14px;padding:10px 12px;box-shadow:var(--shadow)}
+.syncbar div{flex:1;min-width:0;display:flex;flex-direction:column}
+.syncbar b{font-size:14px}
+.syncbar span{font-size:12.5px;color:var(--muted)}
+.syncbar .dot{width:10px;height:10px;border-radius:50%;background:var(--muted);flex:none}
+.syncbar .dot.ok{background:var(--leaf)}.syncbar .dot.busy{background:var(--accent)}.syncbar .dot.err{background:var(--up)}
+
+/* stats */
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.stat{display:flex;flex-direction:column;gap:2px;min-width:0}
+.stat .v{font-size:20px}
+.stat.wide{grid-column:1/-1}
+.stat.wide .v{font-size:30px;font-weight:800}
+.pill{display:inline-block;font-size:12px;padding:1px 8px;border-radius:999px;background:var(--surface2);font-family:var(--font-num);font-weight:700}
+.duo{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.av{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;font-size:13px;flex:none}
+.av.a1{background:var(--p1)} .av.a2{background:var(--p2)}
+
+.btnrow{display:flex;gap:10px;flex-wrap:wrap}
+.btn{border:0;border-radius:12px;padding:11px 16px;font-weight:700;background:var(--surface2);display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.btn.primary{background:var(--accent);color:var(--accent-ink)}
+.btn.line{background:#06C755;color:#fff}
+.btn.ghost{background:transparent;border:1px solid var(--line)}
+.btn.danger{background:transparent;color:var(--up);border:1px solid var(--up)}
+.btn.full{width:100%}
+.btn:disabled{opacity:.5;cursor:default}
+
+/* holdings */
+.hold{display:flex;flex-direction:column}
+.hrow{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:12px 0;border-top:1px solid var(--line)}
+.hrow:first-child{border-top:0;padding-top:4px}
+.hrow .nm{font-weight:700;min-width:0}
+.hrow .nm span{font-family:var(--font-num);color:var(--muted);font-weight:700;margin-right:6px}
+.hrow .r{text-align:right}
+.hrow .sub{font-size:12.5px;color:var(--muted)}
+.linkbtn{border:0;background:none;padding:0;color:var(--leaf);font-size:12.5px;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.priceedit{grid-column:1/-1;display:flex;gap:8px;margin-top:6px}
+.priceedit input{flex:1;min-width:0}
+
+.empty{text-align:center;padding:24px 12px;display:flex;flex-direction:column;gap:10px;align-items:center}
+.empty p{margin:0;color:var(--muted)}
+
+/* forms */
+.seg{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;background:var(--surface2);border-radius:12px;padding:4px;gap:4px}
+.seg button{border:0;background:transparent;border-radius:9px;padding:8px 6px;font-weight:700;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
+.bs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.bs button{border:2px solid var(--line);background:var(--surface);border-radius:12px;padding:12px 8px;font-weight:800;font-size:17px;color:var(--muted);letter-spacing:.1em}
+.bs button[data-v="buy"][aria-pressed="true"]{background:var(--up);border-color:var(--up);color:#FFFFFF}
+.bs button[data-v="sell"][aria-pressed="true"]{background:var(--down);border-color:var(--down);color:#FFFFFF}
+.bs.off button{opacity:.55}
+.bs3{grid-template-columns:repeat(3,1fr)}
+.bs3 button{font-size:15px;letter-spacing:.04em}
+.bs button[data-v="in"][aria-pressed="true"]{background:var(--leaf);border-color:var(--leaf);color:#FFFFFF}
+.bs button[data-v="out"][aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.bs button[data-v="div"][aria-pressed="true"]{background:var(--p2);border-color:var(--p2);color:#FFFFFF}
+.k-out{background:color-mix(in srgb,var(--accent) 28%,transparent);color:var(--ink)}
+.form{display:flex;flex-direction:column;gap:14px}
+.field{display:flex;flex-direction:column;gap:5px;min-width:0}
+.field label,.flabel{font-size:13px;color:var(--muted);font-weight:500}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+input[type=text],input[type=date],input[type=number],input:not([type]),textarea{width:100%;border:1.5px solid var(--line);background:var(--surface);border-radius:11px;padding:10px 12px;font-size:16px;min-width:0}
+input:focus,textarea:focus{border-color:var(--accent);outline:none}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{border:1.5px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 14px 6px 6px;display:inline-flex;align-items:center;gap:8px;font-weight:700}
+.chip .av{width:24px;height:24px;font-size:11px}
+.chip[aria-pressed="true"]{border-color:var(--ink)}
+.totalbox{background:var(--surface2);border-radius:12px;padding:10px 14px;display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}
+.totalbox .num{font-size:20px}
+.hint{font-size:12px;color:var(--muted);margin:0}
+
+/* records */
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.filters button{border:1.5px solid var(--line);background:var(--surface);border-radius:999px;padding:5px 14px;font-weight:700;font-size:13px}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.rec{display:flex;flex-direction:column}
+.month{font-size:12px;letter-spacing:.06em;color:var(--muted);padding:14px 2px 6px;font-weight:700}
+.ritem{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:12px 14px;background:var(--surface);border:0;border-radius:14px;text-align:left;width:100%;margin-bottom:8px;box-shadow:var(--shadow)}
+.ritem .d{font-family:var(--font-num);font-weight:800;font-size:17px;text-align:center;line-height:1.1;min-width:30px}
+.ritem .d small{display:block;font-size:10px;color:var(--muted);font-weight:700}
+.ritem .t{min-width:0}
+.ritem .t b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ritem .t span{font-size:12.5px;color:var(--muted)}
+.ritem .a{text-align:right}
+.kind{font-size:11px;font-weight:700;padding:1px 7px;border-radius:6px;margin-right:6px;vertical-align:1px}
+.k-buy{background:color-mix(in srgb,var(--up) 14%,transparent);color:var(--up)}
+.k-sell{background:color-mix(in srgb,var(--down) 16%,transparent);color:var(--down)}
+.k-div{background:color-mix(in srgb,var(--leaf) 20%,transparent);color:var(--ink)}
+.k-dep{background:color-mix(in srgb,var(--p2) 18%,transparent);color:var(--ink)}
+
+/* nav */
+nav.tabs{position:fixed;left:0;right:0;bottom:0;background:var(--surface);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px);padding-left:max(8px,env(safe-area-inset-left,0px));padding-right:max(8px,env(safe-area-inset-right,0px));z-index:20}
+nav.tabs .in{max-width:640px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
+nav.tabs button{border:0;background:none;padding:8px 4px 10px;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:11.5px;font-weight:700;color:var(--muted)}
+nav.tabs button svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+nav.tabs button[aria-current="page"]{color:var(--ink)}
+nav.tabs button.add .plus{width:40px;height:40px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;margin-top:-18px;box-shadow:var(--shadow)}
+
+/* sheet */
+.overlay{position:fixed;inset:0;background:rgba(10,25,25,.45);z-index:40;display:flex;align-items:flex-end;justify-content:center}
+.sheet{background:var(--bg);width:100%;max-width:640px;border-radius:20px 20px 0 0;padding:18px max(16px,env(safe-area-inset-left,0px)) calc(18px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:12px;max-height:90%;overflow:auto}
+.sheet h3{margin:0;font-family:var(--font-display);font-weight:400;font-size:19px}
+.sheet textarea{min-height:230px;font-size:14px;line-height:1.6;resize:vertical;font-family:var(--font-body)}
+
+/* gate */
+.gate{position:fixed;inset:0;background:var(--bg);z-index:60;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:24px max(16px,env(safe-area-inset-left,0px)) 24px max(16px,env(safe-area-inset-right,0px));text-align:center}
+.gate h1{font-family:var(--font-display);font-weight:400;font-size:24px;margin:0}
+.gate p{margin:0;color:var(--muted);max-width:30ch}
+.dots{display:flex;gap:14px}
+.dots i{width:14px;height:14px;border-radius:50%;border:2px solid var(--ink);display:block}
+.dots i.on{background:var(--ink)}
+.dots.shake{animation:shake .35s}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.pad{display:grid;grid-template-columns:repeat(3,72px);gap:12px}
+.pad button{height:64px;border-radius:50%;border:0;background:var(--surface);box-shadow:var(--shadow);font-family:var(--font-num);font-weight:800;font-size:24px}
+.pad button.blank{visibility:hidden}
+.pad button.sm{font-size:14px;font-family:var(--font-body)}
+
+.toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:9px 16px;border-radius:999px;font-weight:700;font-size:14px;z-index:80;max-width:calc(100% - 32px);text-align:center}
+.settings .field{gap:4px}
+.note{font-size:12.5px;color:var(--muted);line-height:1.6;margin:0}
+</style>
+</head>
+<body>
+
+<div id="gate" class="gate">
+  <svg width="64" height="48" viewBox="0 -1 64 49" aria-hidden="true"><path fill="#6FAE76" d="M0 48 C14 40 26 20 40 12 C48 8 56 14 64 24 L64 48Z"/><rect fill="#8B5A3C" x="34" y="5" width="12" height="8"/><path fill="#5A3E35" d="M32 6.5 L40 0 L48 6.5Z"/></svg>
+  <h1 id="g-title">讀取中…</h1>
+  <p id="g-sub">正在連線到你們的帳本</p>
+  <div class="dots" id="g-dots" hidden><i></i><i></i><i></i><i></i></div>
+  <div class="pad" id="g-pad" hidden></div>
+  <button class="btn primary" type="button" id="g-btn" hidden></button>
+</div>
+
+<div class="wrap" id="app">
+  <header class="top">
+    <div class="brand">財富自由的路上<small>Nicole &amp; HSIAO 的共同帳本</small></div>
+    <button class="iconbtn" id="btn-lock" type="button" aria-label="鎖定畫面">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>鎖定
+    </button>
+  </header>
+
+  <!-- HOME -->
+  <section id="v-home" class="view" style="display:flex;flex-direction:column;gap:16px">
+    <div class="remind" id="remind" hidden>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+      <div><b id="remind-t"></b><span id="remind-s"></span></div>
+      <button class="btn ghost" type="button" id="remind-x">知道了</button>
+    </div>
+    <div class="card hill">
+      <svg class="scene" id="scene" viewBox="0 0 360 250" role="img" aria-labelledby="scene-t">
+        <title id="scene-t">Nicole 和 HSIAO 沿著山路往山頂小木屋前進</title>
+        <defs>
+          <linearGradient id="g-sky" x1="0" y1="0" x2="0" y2="1"><stop id="sky-a" offset="0" stop-color="#5FA8E8"/><stop id="sky-b" offset="1" stop-color="#CFE9F7"/></linearGradient>
+          <radialGradient id="g-sun"><stop offset="0" stop-color="#FFFBEA"/><stop id="sun-mid" offset=".3" stop-color="#FFE7A0" stop-opacity=".8"/><stop offset="1" stop-color="#FFD27A" stop-opacity="0"/></radialGradient>
+          <linearGradient id="g-far" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8EA8C0"/><stop offset="1" stop-color="#BACDD8"/></linearGradient>
+          <linearGradient id="g-mid" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7EA48E"/><stop offset="1" stop-color="#A9C7AF"/></linearGradient>
+          <linearGradient id="g-mtn" x1="0" y1="0" x2=".25" y2="1"><stop offset="0" stop-color="#9DA299"/><stop offset=".14" stop-color="#8F9C84"/><stop offset=".3" stop-color="#7EA673"/><stop offset=".65" stop-color="#5E9B63"/><stop offset="1" stop-color="#3D7A4C"/></linearGradient>
+          <linearGradient id="g-shade" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1D3B28" stop-opacity="0"/><stop offset="1" stop-color="#1D3B28" stop-opacity=".42"/></linearGradient>
+          <linearGradient id="g-mist" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF" stop-opacity="0"/><stop offset=".5" stop-color="#FFFFFF" stop-opacity=".38"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/></linearGradient>
+          <linearGradient id="g-fore" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3F7446"/><stop offset="1" stop-color="#28502F"/></linearGradient>
+          <radialGradient id="g-glow"><stop offset="0" stop-color="#FFD98A" stop-opacity=".95"/><stop offset="1" stop-color="#FFD98A" stop-opacity="0"/></radialGradient>
+          <clipPath id="clip-land"><use href="#l-far"/><use href="#l-mid"/><use href="#l-mtn"/><use href="#l-fore"/></clipPath>
+        </defs>
+        <rect width="360" height="250" fill="url(#g-sky)"/>
+        <g id="stars"></g>
+        <g id="sun"><circle r="30" fill="url(#g-sun)"/><circle id="sun-core" r="7.5" fill="#FFF6D6"/></g>
+        <g id="moon"><circle r="7" fill="#F4F1E4"/><circle cx="-2" cy="-1.5" r="1.6" fill="#DEDACA"/><circle cx="2.4" cy="2" r="1.1" fill="#DEDACA"/><circle cx="1.5" cy="-3.2" r=".8" fill="#DEDACA"/></g>
+        <g id="clouds" class="cloudrift">
+          <g><ellipse cx="96" cy="44" rx="20" ry="6.5"/><ellipse cx="108" cy="39" rx="12" ry="7.5"/><ellipse cx="90" cy="41" rx="9" ry="6"/></g>
+          <g><ellipse cx="196" cy="26" rx="16" ry="5"/><ellipse cx="205" cy="22" rx="9" ry="6"/></g>
+          <g><ellipse cx="322" cy="40" rx="15" ry="4.5"/><ellipse cx="330" cy="36.5" rx="8" ry="5"/></g>
+        </g>
+        <g id="birds" stroke="#3E4A55" fill="none" stroke-width=".8" stroke-linecap="round"><path d="M140 62 q2.6 -2.6 5.2 0 q2.6 -2.6 5.2 0"/><path d="M155 55 q2 -2 4 0 q2 -2 4 0"/><path d="M128 57 q1.7 -1.7 3.4 0 q1.7 -1.7 3.4 0"/></g>
+        <path id="l-far" fill="url(#g-far)" d="M0 250 L0 124 C26 116 50 102 76 106 C102 110 118 90 146 94 C176 98 196 118 226 110 C256 102 282 84 312 90 C332 94 346 102 360 98 L360 250Z"/>
+        <rect y="88" width="360" height="64" fill="url(#g-mist)"/>
+        <path id="l-mid" fill="url(#g-mid)" d="M0 250 L0 164 C34 152 64 146 92 152 C116 158 136 148 160 150 L160 250Z M296 250 L296 138 C316 128 338 124 360 128 L360 250Z"/>
+        <path id="l-mtn" fill="url(#g-mtn)" d="M0 250 L0 216 C40 206 78 190 108 166 C136 144 156 122 180 100 C204 78 226 56 244 44 C250 41 254 41 258 41 L278 41 C285 41 289 44 297 50 C311 60 327 76 343 88 C351 94 356 97 360 98 L360 250Z"/>
+        <path fill="url(#g-shade)" d="M278 41 C285 41 289 44 297 50 C311 60 327 76 343 88 C351 94 356 97 360 98 L360 250 L246 250 C262 190 272 110 278 41Z"/>
+        <g id="rocks"></g>
+        <g id="trees"></g>
+        <path id="trail" class="trailbed" d="M24 238 C70 236 120 232 166 224 C212 216 238 206 222 196 C204 184 142 188 110 178 C86 170 96 160 132 156 C172 151 212 144 238 132 C262 122 300 118 296 104 C292 92 254 96 230 86 C210 78 222 66 242 60 C254 56 262 50 266 43"/>
+        <path id="trail2" class="trailedge" d=""/>
+        <g id="cabin">
+          <rect x="250" y="27.5" width="27" height="13.5" fill="#8B5A3C"/>
+          <g stroke="#6B4129" stroke-width=".55"><line x1="250" y1="31" x2="277" y2="31"/><line x1="250" y1="34.5" x2="277" y2="34.5"/><line x1="250" y1="38" x2="277" y2="38"/></g>
+          <rect x="270" y="13" width="4.5" height="10" fill="#7A6F68"/><rect x="269.4" y="12" width="5.7" height="1.6" fill="#5F5650"/>
+          <path d="M246 29 L263.5 15 L281 29Z" fill="#5A3E35"/><path d="M246 29 L263.5 15 L264.6 16.4 L248.2 29.6Z" fill="#7E5D4E"/>
+          <rect x="253.5" y="31.2" width="7" height="6" fill="#3B2A22"/>
+          <rect id="win-lit" x="253.5" y="31.2" width="7" height="6" fill="#FFCF6E" opacity="0"/>
+          <g stroke="#D9C3A0" stroke-width=".6"><line x1="257" y1="31.2" x2="257" y2="37.2"/><line x1="253.5" y1="34.2" x2="260.5" y2="34.2"/></g>
+          <rect x="264.5" y="31.5" width="6.2" height="9.5" fill="#5B3A24"/><circle cx="269.4" cy="36.4" r=".5" fill="#E2B866"/>
+          <g class="smoke" fill="#F1F1EE"><circle cx="272" cy="11" r="2.2"/><circle cx="272" cy="11" r="2"/><circle cx="272" cy="11" r="2.4"/></g>
+          <line x1="286" y1="41" x2="286" y2="7" stroke="#3D3A36" stroke-width="1"/><circle cx="286" cy="6.6" r=".9" fill="#E3A22F"/>
+          <g class="flagwave"><path d="M286.5 7.5 L314 7.5 L309.5 13.5 L314 19.5 L286.5 19.5Z" fill="#F0B23F"/><text class="flagtxt" x="298" y="16" text-anchor="middle" id="flag-t">100萬</text></g>
+        </g>
+        <path id="l-fore" fill="url(#g-fore)" d="M0 250 L0 236 C40 228 90 238 140 240 C190 242 240 232 290 238 C320 242 342 236 360 232 L360 250Z"/>
+        <g id="fore"></g>
+        <rect id="tint" width="360" height="250" clip-path="url(#clip-land)" fill="#000000" opacity="0" style="mix-blend-mode:multiply;pointer-events:none"/>
+        <circle id="glow" cx="257" cy="34" r="14" fill="url(#g-glow)" opacity="0"/>
+        <g id="signs"></g>
+        <g id="hikers"></g>
+        <g id="confetti" class="confetti"></g>
+      </svg>
+      <div class="timechip" id="timechip"></div>
+      <div class="celebrate" id="celebrate" aria-live="polite"><b id="cel-t"></b><span id="cel-s"></span></div>
+      <div class="cap">
+        <div class="progline">
+          <div class="big">已爬 <b id="h-prog" class="num">0%</b></div>
+          <div class="muted" style="font-size:13.5px">距離 <span id="h-goal">100 萬</span> 還差 <b class="num" id="h-left" style="color:var(--ink)">—</b></div>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <span class="pace" id="h-pace"><i></i><span>—</span></span>
+          <span class="pace" id="h-need"><span>—</span></span>
+        </div>
+        <button class="quote" type="button" id="quote" aria-label="換一句打氣">
+          <span class="av a1" id="q-av">N</span>
+          <span><small id="q-meta">今天的打氣</small><p id="q-text"></p></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="card stats">
+      <div class="stat wide">
+        <span class="label">總資產（可用餘額＋持股市值）</span>
+        <span class="v num" id="s-total">$0</span>
+        <span><span class="num" id="s-pnl">$0</span> <span class="pill" id="s-ret">0.00%</span> <span class="muted" style="font-size:12.5px">相對淨投入</span></span>
+      </div>
+      <div class="stat wide avail">
+        <span class="label">目前可用餘額（還沒拿去買股票的現金）</span>
+        <span class="v num" id="s-cash">$0</span>
+      </div>
+      <div class="stat"><span class="label">淨投入（存入－領出）</span><span class="v num" id="s-in">$0</span><span class="muted" style="font-size:12px" id="s-inout"></span></div>
+      <div class="stat"><span class="label">持股市值</span><span class="v num" id="s-mv">$0</span></div>
+      <div class="stat"><span class="label">已實現損益</span><span class="v num" id="s-real">$0</span></div>
+      <div class="stat"><span class="label">累計股利</span><span class="v num" id="s-div">$0</span></div>
+      <div class="stat wide" style="border-top:1px solid var(--line);padding-top:12px">
+        <span class="label">一人一半</span>
+        <div class="duo">
+          <span class="av a1" id="av1">N</span><span class="av a2" id="av2">H</span>
+          <span>每人資產 <b class="num" id="s-each" style="font-size:18px">$0</b></span>
+          <span class="muted" style="font-size:13px">損益 <span class="num" id="s-eachpnl">$0</span></span>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn line full" id="btn-line" type="button">整理成 LINE 訊息</button>
+    <p class="note" style="margin-top:-8px"><a href="https://docs.google.com/spreadsheets/d/1dKEzo4sEOB6jZSMVmSQm6ReHXW1F9ocIjzBa4W3zlTs/edit" target="_blank" rel="noopener" style="color:var(--leaf);font-weight:700">在 Google 試算表查看（請回到這裡修改）</a></p>
+
+    <h2 class="sec">目前持股</h2>
+    <div class="card hold" id="holdings"></div>
+  </section>
+
+  <!-- ADD -->
+  <section id="v-add" class="view" hidden style="flex-direction:column;gap:16px">
+    <div class="seg" id="add-kind" role="group" aria-label="記錄類型">
+      <button type="button" data-v="trade" aria-pressed="true">交易</button>
+      <button type="button" data-v="dep" aria-pressed="false">資金進出</button>
+    </div>
+
+    <form class="card form" id="f-trade" novalidate>
+      <div class="field">
+        <span class="flabel" id="f-side-l">這筆是買進還是賣出？</span>
+        <div class="bs" id="f-side" role="group" aria-labelledby="f-side-l">
+          <button type="button" data-v="buy" aria-pressed="true">買進</button>
+          <button type="button" data-v="sell" aria-pressed="false">賣出</button>
+        </div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label for="f-date">日期</label><input type="date" id="f-date"></div>
+        <div class="field"><span class="flabel">下單人</span><div class="chips" id="f-by"></div></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label for="f-code">股票代號</label><input type="text" id="f-code" inputmode="text" autocomplete="off" list="codes" placeholder="0050"></div>
+        <div class="field"><label for="f-name">名稱</label><input type="text" id="f-name" autocomplete="off" placeholder="元大台灣50"></div>
+      </div>
+      <datalist id="codes"></datalist>
+      <p class="hint" id="f-codehint" hidden>清單裡找不到這個代號（可能是剛上市），請自己填名稱，下次輸入會自動帶出。</p>
+      <div class="grid2" id="f-trade-only">
+        <div class="field"><label for="f-shares">股數</label><input type="number" id="f-shares" inputmode="numeric" min="0" step="1" placeholder="1000"></div>
+        <div class="field"><label for="f-price">成交價</label><input type="number" id="f-price" inputmode="decimal" min="0" step="0.01" placeholder="185.50"></div>
+        <div class="field"><label for="f-fee">手續費</label><input type="number" id="f-fee" inputmode="numeric" min="0" step="1"></div>
+        <div class="field" id="f-tax-wrap"><label for="f-tax">證交稅</label><input type="number" id="f-tax" inputmode="numeric" min="0" step="1"></div>
+      </div>
+      <div class="field" id="f-div-only" hidden><label for="f-amount">實收股利（元）</label><input type="number" id="f-amount" inputmode="numeric" min="0" step="1" placeholder="3200"></div>
+      <p class="hint" id="f-feehint">手續費、證交稅會自動算，可以手動改成對帳單上的數字。</p>
+      <div class="field"><label for="f-note">備註（選填）</label><input type="text" id="f-note" autocomplete="off"></div>
+      <div class="totalbox"><span class="muted" id="f-total-l">應付金額</span><span class="num" id="f-total">$0</span></div>
+      <p class="hint" id="f-avail"></p>
+      <div class="btnrow">
+        <button class="btn primary" type="submit" id="f-save" style="flex:1">記下這筆</button>
+        <button class="btn ghost" type="button" id="f-cancel" hidden>取消</button>
+      </div>
+      <button class="btn danger" type="button" id="f-del" hidden>刪除這筆</button>
+    </form>
+
+    <form class="card form" id="f-dep" hidden novalidate>
+      <div class="field">
+        <span class="flabel" id="d-type-l">這筆是？</span>
+        <div class="bs bs3" id="d-type" role="group" aria-labelledby="d-type-l">
+          <button type="button" data-v="in" aria-pressed="true">存入</button>
+          <button type="button" data-v="out" aria-pressed="false">領出</button>
+          <button type="button" data-v="div" aria-pressed="false">股利入帳</button>
+        </div>
+      </div>
+      <p class="note" id="d-help"></p>
+      <div class="grid2">
+        <div class="field"><label for="d-date">日期</label><input type="date" id="d-date"></div>
+        <div class="field" id="d-per-w"><label for="d-per" id="d-per-l">每人存多少</label><input type="number" id="d-per" inputmode="numeric" min="0" step="1" placeholder="10000"></div>
+        <div class="field" id="d-amt-w" hidden><label for="d-amt">實收股利（元）</label><input type="number" id="d-amt" inputmode="numeric" min="0" step="1" placeholder="3200"></div>
+      </div>
+      <div class="grid2" id="d-stock" hidden>
+        <div class="field"><label for="d-code">哪一檔（選填）</label><input type="text" id="d-code" autocomplete="off" list="codes" placeholder="0056"></div>
+        <div class="field"><label for="d-name">名稱</label><input type="text" id="d-name" autocomplete="off"></div>
+      </div>
+      <div class="field"><label for="d-note">備註（選填）</label><input type="text" id="d-note" autocomplete="off"></div>
+      <div class="totalbox"><span class="muted" id="d-total-l">兩人合計存入</span><span class="num" id="d-total">$0</span></div>
+      <p class="hint" id="d-avail"></p>
+      <div class="btnrow">
+        <button class="btn primary" type="submit" id="d-save" style="flex:1">記下這次存錢</button>
+        <button class="btn ghost" type="button" id="d-cancel" hidden>取消</button>
+      </div>
+      <button class="btn danger" type="button" id="d-del" hidden>刪除這筆</button>
+    </form>
+  </section>
+
+  <!-- RECORDS -->
+  <section id="v-rec" class="view" hidden style="flex-direction:column;gap:12px">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+      <div class="filters" id="filters" role="group" aria-label="篩選">
+        <button type="button" data-v="all" aria-pressed="true">全部</button>
+        <button type="button" data-v="trade" aria-pressed="false">交易</button>
+        <button type="button" data-v="dep" aria-pressed="false">資金進出</button>
+      </div>
+      <button class="btn ghost" type="button" id="btn-xlsx">匯出 Excel</button>
+    </div>
+    <div class="rec" id="records"></div>
+  </section>
+
+  <!-- SETTINGS -->
+  <section id="v-set" class="view" hidden style="flex-direction:column;gap:16px">
+    <form class="card form settings" id="f-set" novalidate>
+      <h2 class="sec" style="margin:0">目標</h2>
+      <div class="field"><label for="s-goal">目標金額（含損益的總資產）</label><input type="number" id="s-goal" inputmode="numeric" min="1" step="1000"></div>
+      <div class="grid2">
+        <div class="field"><label for="s-start">起始日</label><input type="date" id="s-start"></div>
+        <div class="field"><label for="s-end">目標日</label><input type="date" id="s-end"></div>
+      </div>
+      <h2 class="sec" style="margin:0">手續費</h2>
+      <div class="grid2">
+        <div class="field"><label for="s-disc">折扣（例：6 折填 0.6）</label><input type="number" id="s-disc" inputmode="decimal" min="0" max="1" step="0.01"></div>
+        <div class="field"><label for="s-min">最低手續費</label><input type="number" id="s-min" inputmode="numeric" min="0" step="1"></div>
+      </div>
+      <p class="note">費率 0.1425%；證交稅股票 0.3%、代號 00 開頭的 ETF 0.1%。</p>
+      <button class="btn primary" type="submit">儲存設定</button>
+    </form>
+    <div class="card form">
+      <h2 class="sec" style="margin:0">我的帳號</h2>
+      <p class="note" id="me-line"></p>
+      <button class="btn ghost" type="button" id="ext-btn" hidden>用外部瀏覽器開啟（下載 Excel 時使用）</button>
+    </div>
+    <div class="card form" id="members-card" hidden>
+      <h2 class="sec" style="margin:0">成員管理</h2>
+      <p class="note">只有管理者看得到這一區。新成員用 LINE 登入並送出申請後，會出現在這裡。</p>
+      <div id="members-list" style="display:flex;flex-direction:column;gap:10px"></div>
+    </div>
+    <form class="card form" id="f-pin" novalidate>
+      <h2 class="sec" style="margin:0">更換密碼</h2>
+      <div class="field"><label for="p-cur">目前的密碼</label><input type="password" id="p-cur" inputmode="numeric" maxlength="4" autocomplete="current-password"></div>
+      <div class="field"><label for="p-new">新的 4 位數密碼</label><input type="password" id="p-new" inputmode="numeric" maxlength="4" autocomplete="new-password"></div>
+      <button class="btn ghost" type="submit">更換密碼</button>
+      <p class="note">換了之後，兩個人下次打開都要輸入新密碼。</p>
+    </form>
+  </section>
+</div>
+
+<nav class="tabs" aria-label="主選單"><div class="in">
+  <button type="button" data-tab="home" aria-current="page"><svg viewBox="0 0 24 24"><path d="M3 20l6-9 4 5 3-4 5 8z"/></svg>總覽</button>
+  <button type="button" data-tab="add" class="add"><span class="plus"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>記一筆</button>
+  <button type="button" data-tab="rec"><svg viewBox="0 0 24 24"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"/></svg>紀錄</button>
+  <button type="button" data-tab="set"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>設定</button>
+</div></nav>
+
+<div class="overlay" id="sheet" hidden>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-h">
+    <h3 id="sheet-h">整理 LINE 訊息</h3>
+    <div class="field"><span class="flabel">要整理哪段時間的紀錄</span>
+      <div class="seg" id="sh-range" role="group" aria-label="時間範圍">
+        <button type="button" data-v="today" aria-pressed="false">今天</button>
+        <button type="button" data-v="week" aria-pressed="true">本週</button>
+        <button type="button" data-v="month" aria-pressed="false">本月</button>
+        <button type="button" data-v="custom" aria-pressed="false">自訂</button>
+      </div>
+    </div>
+    <div class="grid2" id="sh-custom" hidden>
+      <div class="field"><label for="sh-from">從</label><input type="date" id="sh-from"></div>
+      <div class="field"><label for="sh-to">到</label><input type="date" id="sh-to"></div>
+    </div>
+    <textarea id="sheet-text" readonly aria-label="訊息內容"></textarea>
+    <p class="note">確認內容後再送出，訊息會以你本人的 LINE 身分發出。從群組裡打開帳本時，可以直接送到這個群組。</p>
+    <div class="btnrow">
+      <button class="btn line" type="button" id="sheet-send" style="flex:1">送到這個聊天室</button>
+      <button class="btn primary" type="button" id="sheet-pick" style="flex:1">選擇聊天室分享</button>
+    </div>
+    <button class="btn ghost" type="button" id="sheet-copy">複製文字</button>
+    <button class="btn ghost" type="button" id="sheet-close">關閉</button>
+  </div>
+</div>
+
+<div class="overlay" id="confirm" hidden>
+  <div class="sheet" role="alertdialog" aria-modal="true" aria-labelledby="cf-msg">
+    <h3 id="cf-msg"></h3>
+    <div class="btnrow"><button class="btn danger" type="button" id="cf-yes" style="flex:1">確定</button><button class="btn ghost" type="button" id="cf-no" style="flex:1">取消</button></div>
+  </div>
+</div>
+
+<div class="toast" id="toast" hidden role="status"></div>
+
+<script type="application/json" id="twcodes">{"1101":"台泥","1102":"亞泥","1103":"嘉泥","1104":"環泥","1108":"幸福","1109":"信大","1110":"東泥","1201":"味全","1203":"味王","1210":"大成","1213":"大飲","1215":"卜蜂","1216":"統一","1217":"愛之味","1218":"泰山","1219":"福壽","1220":"台榮","1225":"福懋油","1227":"佳格","1229":"聯華","1231":"聯華食","1232":"大統益","1233":"天仁","1234":"黑松","1235":"興泰","1236":"宏亞","1256":"鮮活果汁-KY","1301":"台塑","1303":"南亞","1304":"台聚","1305":"華夏","1307":"三芳","1308":"亞聚","1309":"台達化","1310":"台苯","1312":"國喬","1313":"聯成","1314":"中石化","1315":"達新","1316":"上曜","1319":"東陽","1321":"大洋","1323":"永裕","1324":"地球","1325":"恆大","1326":"台化","1337":"再生-KY","1338":"廣華-KY","1339":"昭輝","1340":"勝悅-KY","1341":"富林-KY","1342":"八貫","1402":"遠東新","1409":"新纖","1410":"南染","1413":"宏洲","1414":"東和","1416":"廣豐","1417":"嘉裕","1418":"東華","1419":"新紡","1423":"利華","1432":"大魯閣","1434":"福懋","1435":"中福","1436":"華友聯","1437":"勤益控","1438":"三地開發","1439":"雋揚","1440":"南紡","1441":"大東","1442":"名軒","1443":"立益物流","1444":"力麗","1445":"大宇","1446":"宏和","1447":"力鵬","1449":"佳和","1451":"年興","1452":"宏益","1453":"大將","1454":"台富","1455":"集盛","1456":"怡華","1457":"宜進","1459":"聯發","1460":"宏遠","1463":"強盛新","1464":"得力","1465":"偉全","1466":"聚隆","1467":"南緯","1468":"昶和","1470":"大統新創","1471":"首利","1472":"三洋實業","1473":"台南","1474":"弘裕","1475":"業旺","1476":"儒鴻","1477":"聚陽","1503":"士電","1504":"東元","1506":"正道","1512":"瑞利","1513":"中興電","1514":"亞力","1515":"力山","1516":"川飛","1517":"利奇","1519":"華城","1521":"大億","1522":"堤維西","1524":"耿鼎","1525":"江申","1526":"日馳","1527":"鑽全","1528":"恩德","1529":"樂事綠能","1530":"亞崴","1531":"高林股","1532":"勤美","1533":"車王電","1535":"中宇","1536":"和大","1537":"廣隆","1538":"正峰","1539":"巨庭","1540":"喬福","1541":"錩泰","1558":"伸興","1560":"中砂","1563":"巧新","1568":"倉佑","1582":"信錦","1583":"程泰","1587":"吉茂","1589":"永冠-KY","1590":"亞德客-KY","1597":"直得","1598":"岱宇","1603":"華電","1604":"聲寶","1605":"華新","1608":"華榮","1609":"大亞","1611":"中電","1612":"宏泰","1614":"三洋電","1615":"大山","1616":"億泰","1617":"榮星","1618":"合機","1623":"大東電","1626":"艾美特-KY","1702":"南僑","1707":"葡萄王","1708":"東鹼","1709":"和益","1710":"東聯","1711":"永光","1712":"興農","1713":"國化","1714":"和桐","1717":"長興","1718":"中纖","1720":"生達","1721":"三晃","1722":"台肥","1723":"中碳","1725":"元禎","1726":"永記","1727":"中華化","1730":"花仙子","1731":"美吾華","1732":"毛寶","1733":"五鼎","1734":"杏輝","1735":"日勝化","1736":"喬山","1737":"臺鹽","1752":"南光","1760":"寶齡富錦","1762":"中化生","1773":"勝一","1776":"展宇","1783":"和康生","1786":"科妍","1789":"神隆","1795":"美時","1802":"台玻","1805":"寶徠","1806":"冠軍","1808":"潤隆","1809":"中釉","1810":"和成","1817":"凱撒衛","1903":"士紙","1904":"正隆","1905":"華紙","1906":"寶隆","1907":"永豐餘","1909":"榮成","2002":"中鋼","2006":"東和鋼鐵","2007":"燁興","2008":"高興昌","2009":"第一銅","2010":"春源","2012":"春雨","2013":"中鋼構","2014":"中鴻","2015":"豐興","2017":"官田鋼","2020":"美亞","2022":"聚亨","2023":"燁輝","2024":"志聯","2025":"千興","2027":"大成鋼","2028":"威致","2029":"盛餘","2030":"彰源","2031":"新光鋼","2032":"新鋼","2033":"佳大","2034":"允強","2038":"海光","2049":"上銀","2059":"川湖","2062":"橋椿","2069":"運錩","2072":"世紀風電","2101":"南港","2102":"泰豐","2103":"台橡","2104":"國際中橡","2105":"正新","2106":"建大","2107":"厚生","2108":"南帝","2109":"華豐","2114":"鑫永銓","2115":"六暉-KY","2201":"裕隆","2204":"中華","2206":"三陽工業","2207":"和泰車","2208":"台船","2211":"長榮鋼","2227":"裕日車","2228":"劍麟","2231":"為升","2233":"宇隆","2236":"百達-KY","2239":"英利-KY","2241":"艾姆勒","2243":"宏旭-KY","2247":"汎德永業","2248":"華勝-KY","2250":"IKKA-KY","2301":"光寶科","2302":"麗正","2303":"聯電","2305":"全友","2308":"台達電","2312":"金寶","2313":"華通","2314":"台揚","2316":"楠梓電","2317":"鴻海","2321":"東訊","2323":"中環","2324":"仁寶","2327":"國巨*","2328":"廣宇","2329":"華泰","2330":"台積電","2331":"精英","2332":"友訊","2337":"旺宏","2338":"光罩","2340":"台亞","2342":"茂矽","2344":"華邦電","2345":"智邦","2347":"聯強","2348":"海悅","2349":"錸德","2351":"順德","2352":"佳世達","2353":"宏碁","2354":"鴻準","2355":"敬鵬","2356":"英業達","2357":"華碩","2359":"所羅門","2360":"致茂","2362":"藍天","2363":"矽統","2364":"倫飛","2365":"昆盈","2367":"燿華","2368":"金像電","2369":"菱生","2371":"大同","2373":"震旦行","2374":"佳能","2375":"凱美","2376":"技嘉","2377":"微星","2379":"瑞昱","2380":"虹光","2382":"廣達","2383":"台光電","2385":"群光","2387":"精元","2388":"威盛","2390":"云辰","2392":"正崴","2393":"億光","2395":"研華","2397":"友通","2399":"映泰","2401":"凌陽","2402":"毅嘉","2404":"漢唐","2405":"輔信","2406":"國碩","2408":"南亞科","2409":"友達","2412":"中華電","2413":"環科","2414":"精技","2415":"錩新","2417":"圓剛","2419":"仲琦","2420":"新巨","2421":"建準","2423":"固緯","2424":"隴華","2425":"承啟","2426":"鼎元","2427":"三商電","2428":"興勤","2429":"銘旺科","2430":"燦坤","2431":"聯昌","2433":"互盛電","2434":"統懋","2436":"偉詮電","2438":"翔耀","2439":"美律","2440":"太空梭","2441":"超豐","2442":"新美齊","2444":"兆勁","2449":"京元電子","2450":"神腦","2451":"創見","2453":"凌群","2454":"聯發科","2455":"全新","2457":"飛宏","2458":"義隆","2459":"敦吉","2460":"建通","2461":"光群雷","2462":"良得電","2464":"盟立","2465":"麗臺","2466":"冠西電","2467":"志聖","2468":"華經","2471":"資通","2472":"立隆電","2474":"可成","2476":"鉅祥","2477":"美隆電","2478":"大毅","2480":"敦陽科","2481":"強茂","2482":"連宇","2483":"百容","2484":"希華","2485":"兆赫","2486":"一詮","2488":"漢平","2489":"瑞軒","2491":"吉祥全","2492":"華新科","2493":"揚博","2495":"普安","2496":"卓越","2497":"怡利電","2498":"宏達電","2501":"國建","2504":"國產","2505":"國揚","2506":"太設","2509":"全坤建","2511":"太子","2514":"龍邦","2515":"中工","2516":"新建","2520":"冠德","2524":"京城","2527":"宏璟","2528":"皇普","2530":"華建","2534":"宏盛","2535":"達欣工","2536":"宏普","2537":"聯上發","2538":"基泰","2539":"櫻花建","2540":"愛山林","2542":"興富發","2543":"皇昌","2545":"皇翔","2546":"根基","2547":"日勝生","2548":"華固","2597":"潤弘","2601":"益航","2603":"長榮","2605":"新興","2606":"裕民","2607":"榮運","2608":"嘉里大榮","2609":"陽明","2610":"華航","2611":"志信","2612":"中航","2613":"中櫃","2614":"東森","2615":"萬海","2616":"山隆","2617":"台航","2618":"長榮航","2630":"亞航","2633":"台灣高鐵","2634":"漢翔","2636":"台驊控股","2637":"慧洋-KY","2642":"宅配通","2645":"長榮航太","2646":"星宇航空","2701":"萬企","2702":"華園","2704":"國賓","2705":"六福","2706":"第一店","2707":"晶華","2712":"遠雄來","2722":"夏都","2723":"美食-KY","2727":"王品","2731":"雄獅","2739":"寒舍","2748":"雲品","2753":"八方雲集","2762":"世界健身-KY","2801":"彰銀","2812":"台中銀","2816":"旺旺保","2820":"華票","2832":"台產","2834":"臺企銀","2836":"高雄銀","2838":"聯邦銀","2845":"遠東銀","2849":"安泰銀","2850":"新產","2851":"中再保","2852":"第一保","2855":"統一證","2867":"三商壽","2880":"華南金","2881":"富邦金","2882":"國泰金","2883":"凱基金","2884":"玉山金","2885":"元大金","2886":"兆豐金","2887":"台新新光金","2889":"國票金","2890":"永豐金","2891":"中信金","2892":"第一金","2897":"王道銀行","2901":"欣欣","2903":"遠百","2904":"匯僑","2905":"三商","2906":"高林","2908":"特力","2910":"統領","2911":"麗嬰房","2912":"統一超","2913":"農林","2915":"潤泰全","2923":"鼎固-KY","2929":"淘帝-KY","2939":"永邑-KY","2945":"三商家購","3002":"歐格","3003":"健和興","3004":"豐達科","3005":"神基","3006":"晶豪科","3008":"大立光","3010":"華立","3011":"今皓","3013":"晟銘電","3014":"聯陽","3015":"全漢","3016":"嘉晶","3017":"奇鋐","3018":"隆銘綠能","3019":"亞光","3021":"鴻名","3022":"威強電","3023":"信邦","3024":"憶聲","3025":"星通","3026":"禾伸堂","3027":"盛達","3028":"增你強","3029":"零壹","3030":"德律","3031":"佰鴻","3032":"偉訓","3033":"威健","3034":"聯詠","3035":"智原","3036":"文曄","3037":"欣興","3038":"全台","3040":"遠見","3041":"揚智","3042":"晶技","3043":"科風","3044":"健鼎","3045":"台灣大","3046":"建碁","3047":"訊舟","3048":"益登","3049":"精金","3050":"鈺德","3051":"力特","3052":"夆典","3054":"立萬利","3055":"蔚華科","3056":"富華新","3057":"喬鼎","3058":"立德","3059":"華晶科","3060":"銘異","3062":"建漢","3090":"日電貿","3092":"鴻碩","3094":"聯傑","3130":"一零四","3135":"凌航","3138":"耀登","3149":"正達","3164":"景岳","3167":"大量","3168":"眾福科","3189":"景碩","3209":"全科","3229":"晟鈦","3231":"緯創","3257":"虹冠電","3266":"昇陽","3296":"勝德","3305":"昇貿","3308":"聯德","3311":"閎暉","3312":"弘憶股","3321":"同泰","3338":"泰碩","3346":"麗清","3356":"奇偶","3376":"新日興","3380":"明泰","3406":"玉晶光","3413":"京鼎","3416":"融程電","3419":"譁裕","3432":"台端","3437":"榮創","3443":"創意","3447":"展達","3450":"聯鈞","3481":"群創","3494":"誠研","3501":"維熹","3504":"揚明光","3515":"華擎","3518":"柏騰","3528":"安馳","3530":"晶相光","3532":"台勝科","3533":"嘉澤","3535":"晶彩科","3543":"州巧","3545":"敦泰","3550":"聯穎","3557":"嘉威","3563":"牧德","3576":"聯合再生","3583":"辛耘","3588":"通嘉","3591":"艾笛森","3592":"瑞鼎","3593":"力銘","3596":"智易","3605":"宏致","3607":"谷崧","3617":"碩天","3622":"洋華","3645":"達邁","3652":"精聯","3653":"健策","3661":"世芯-KY","3665":"貿聯-KY","3669":"圓展","3673":"TPK-KY","3679":"新至陞","3686":"達能","3694":"海華","3701":"大眾控","3702":"大聯大","3703":"欣陸","3704":"合勤控","3705":"永信","3706":"神達","3708":"上緯投控","3711":"日月光投控","3712":"永崴投控","3714":"富采","3715":"定穎投控","3716":"中化控股","3717":"聯嘉投控","4104":"佳醫","4106":"雃博","4108":"懷特","4119":"旭富","4133":"亞諾法","4137":"麗豐-KY","4142":"國光生","4148":"全宇生技-KY","4155":"訊映","4164":"承業醫","4190":"佐登-KY","4306":"炎洲","4414":"如興","4426":"利勤","4438":"廣越","4439":"冠星-KY","4440":"宜新實業","4441":"振大環球","4526":"東台","4532":"瑞智","4536":"拓凱","4540":"全球傳動","4545":"銘鈺","4551":"智伸科","4552":"力達-KY","4555":"氣立","4557":"永新-KY","4560":"強信-KY","4562":"穎漢","4564":"元翎","4566":"時碩工業","4569":"六方科-KY","4571":"鈞興-KY","4572":"駐龍","4576":"大銀微系統","4581":"光隆精密-KY","4583":"台灣精銳","4585":"達明","4588":"玖鼎電力","4720":"德淵","4722":"國精化","4736":"泰博","4737":"華廣","4739":"康普","4746":"台耀","4755":"三福化","4763":"材料*-KY","4764":"雙鍵","4766":"南寶","4770":"上品","4771":"望隼","4807":"日成-KY","4904":"遠傳","4906":"正文","4912":"聯德控股-KY","4915":"致伸","4916":"事欣科","4919":"新唐","4927":"泰鼎-KY","4930":"燦星網","4934":"太極","4935":"茂林-KY","4938":"和碩","4942":"嘉彰","4943":"康控-KY","4949":"有成精密","4952":"凌通","4956":"光鋐","4958":"臻鼎-KY","4960":"誠美材","4961":"天鈺","4967":"十銓","4968":"立積","4976":"佳凌","4977":"眾達-KY","4989":"榮科","4994":"傳奇","4999":"鑫禾","5007":"三星","5203":"訊連","5215":"科嘉-KY","5222":"全訊","5225":"東科-KY","5234":"達興材料","5243":"乙盛-KY","5244":"弘凱","5258":"虹堡","5269":"祥碩","5283":"禾聯碩","5284":"jpp-KY","5285":"界霖","5288":"豐祥-KY","5292":"華懋","5306":"桂盟","5388":"中磊","5434":"崇越","5469":"瀚宇博","5471":"松翰","5484":"慧友","5515":"建國","5519":"隆大","5521":"工信","5522":"遠雄","5525":"順天","5531":"鄉林","5533":"皇鼎","5534":"長虹","5538":"東明-KY","5546":"永固-KY","5607":"遠雄港","5608":"四維航","5706":"鳳凰","5871":"中租-KY","5876":"上海商銀","5880":"合庫金","5906":"台南-KY","5907":"大洋-KY","6005":"群益證","6024":"群益期","6108":"競國","6112":"邁達特","6115":"鎰勝","6116":"彩晶","6117":"迎廣","6120":"達運","6128":"上福","6133":"金橋","6136":"富爾特","6139":"亞翔","6141":"柏承","6142":"友勁","6152":"百一","6153":"嘉聯益","6155":"鈞寶","6164":"華興","6165":"浪凡","6166":"凌華","6168":"宏齊","6176":"瑞儀","6177":"達麗","6183":"關貿","6184":"大豐電","6189":"豐藝","6191":"精成科","6192":"巨路","6196":"帆宣","6197":"佳必琪","6201":"亞弘電","6202":"盛群","6205":"詮欣","6206":"飛捷","6209":"今國光","6213":"聯茂","6214":"精誠","6215":"和椿","6216":"居易","6224":"聚鼎","6225":"天瀚","6226":"光鼎","6230":"尼得科超眾","6235":"華孚","6239":"力成","6243":"迅杰","6257":"矽格","6269":"台郡","6271":"同欣電","6272":"驊陞","6277":"宏正","6278":"台表科","6281":"全國電","6282":"康舒","6283":"淳安","6285":"啟碁","6405":"悅城","6409":"旭隼","6412":"群電","6414":"樺漢","6415":"矽力*-KY","6416":"瑞祺電通","6426":"統新","6431":"光麗-KY","6438":"迅得","6442":"光聖","6443":"元晶","6446":"藥華藥","6449":"鈺邦","6451":"訊芯-KY","6456":"GIS-KY","6464":"台數科","6472":"保瑞","6477":"安集","6491":"晶碩","6504":"南六","6505":"台塑化","6515":"穎崴","6525":"捷敏-KY","6526":"達發","6531":"愛普*","6533":"晶心科","6541":"泰福-KY","6550":"北極星藥業-KY","6552":"易華電","6558":"興能高","6573":"虹揚-KY","6579":"研揚","6581":"鋼聯","6582":"申豐","6585":"鼎基","6589":"台康生技","6591":"動力-KY","6592":"和潤企業","6598":"ABC-KY","6605":"帝寶","6606":"建德工業","6614":"資拓宏宇","6625":"必應","6641":"基士德-KY","6655":"科定","6657":"華安","6658":"聯策","6666":"羅麗芬-KY","6668":"中揚光","6669":"緯穎","6670":"復盛應用","6671":"三能-KY","6672":"騰輝電子-KY","6674":"鋐寶科技","6689":"伊雲谷","6691":"洋基工程","6695":"芯鼎","6698":"旭暉應材","6706":"惠特","6715":"嘉基","6719":"力智","6722":"輝創","6742":"澤米","6743":"安普新","6753":"龍德造船","6754":"匯僑設計","6756":"威鋒電子","6757":"台灣虎航","6768":"志強-KY","6770":"力積電","6776":"展碁國際","6781":"AES-KY","6782":"視陽","6789":"采鈺","6790":"永豐實","6792":"詠業","6794":"向榮生技","6796":"晉弘","6799":"來頡","6805":"富世達","6806":"森崴能源","6807":"峰源-KY","6830":"汎銓","6831":"邁科","6834":"天二科技","6835":"圓裕","6838":"台新藥","6861":"睿生光電","6862":"三集瑞-KY","6863":"永道-KY","6869":"雲豹能源","6873":"泓德能源","6885":"全福生技","6887":"寶綠特-KY","6890":"來億-KY","6901":"鑽石投資","6902":"GOGOLOOK","6906":"現觀科","6909":"創控","6914":"阜爾運通","6916":"華凌","6918":"愛派司","6919":"康霈*","6923":"中台","6928":"攸泰科技","6931":"青松健康","6933":"AMAX-KY","6934":"心誠鎂","6936":"永鴻生技","6937":"天虹","6944":"兆聯實業","6952":"大武山","6957":"裕慶-KY","6958":"日盛台駿","6962":"奕力-KY","6965":"中傑-KY","6994":"富威電力","7705":"三商餐飲","7711":"永擎","7721":"微程式","7722":"LINEPAY","7732":"金興精密","7736":"虎山","7749":"意騰-KY","7750":"新代","7765":"中華資安","7769":"鴻勁","7780":"大研生醫*","7786":"東方風能","7788":"松川精密","7791":"皇家可口","7795":"長廣","7799":"禾榮科","8011":"台通","8016":"矽創","8021":"尖點","8028":"昇陽半導體","8033":"雷虎","8039":"台虹","8045":"達運光電","8046":"南電","8070":"長華*","8072":"陞泰","8081":"致新","8101":"華冠","8103":"瀚荃","8104":"錸寶","8105":"凌巨","8110":"華東","8112":"至上","8114":"振樺電","8131":"福懋科","8150":"南茂","8163":"達方","8201":"無敵","8210":"勤誠","8213":"志超","8215":"明基材","8222":"寶一","8249":"菱光","8261":"富鼎","8271":"宇瞻","8341":"日友","8367":"建新國際","8374":"羅昇","8404":"百和興業-KY","8411":"福貞-KY","8422":"可寧衛*","8429":"金麗-KY","8438":"昶昕","8442":"威宏-KY","8443":"阿瘦","8454":"富邦媒","8462":"柏文","8463":"潤泰材","8464":"億豐","8466":"美吉吉-KY","8467":"波力-KY","8473":"山林水","8476":"台境*","8478":"東哥遊艇","8481":"政伸","8482":"商億-KY","8488":"吉源-KY","8499":"鼎炫-KY","8926":"台汽電","8940":"新天地","8996":"高力","9802":"鈺齊-KY","9902":"台火","9904":"寶成","9905":"大華","9906":"欣巴巴","9907":"統一實","9908":"大台北","9910":"豐泰","9911":"櫻花","9912":"偉聯","9914":"美利達","9917":"中保科","9918":"欣天然","9919":"康那香","9921":"巨大","9924":"福興","9925":"新保","9926":"新海","9927":"泰銘","9928":"中視","9929":"秋雨","9930":"中聯資源","9931":"欣高","9933":"中鼎","9934":"成霖","9935":"慶豐富","9937":"全國","9938":"百和","9939":"宏全","9940":"信義","9941":"裕融","9942":"茂順","9943":"好樂迪","9944":"新麗","9945":"潤泰新","9946":"三發地產","9955":"佳龍","9958":"世紀鋼","1101B":"台泥乙特","1312A":"國喬特","1522A":"堤維西甲特","2002A":"中鋼特","2348A":"海悅甲特","2836A":"高雄銀甲特","2838A":"聯邦銀甲特","2881A":"富邦特","2881B":"富邦金乙特","2881C":"富邦金丙特","2882A":"國泰特","2882B":"國泰金乙特","2883B":"凱基金乙特","2887E":"台新新光戊特一","2887F":"台新新光戊特二","2887G":"台新新光庚特一","2887H":"台新新光庚特二","2887I":"台新新光辛特","2887Z1":"台新新光己特","2891B":"中信金乙特","2891C":"中信金丙特","2897B":"王道銀乙特","5871A":"中租-KY甲特","6592A":"和潤企業甲特","6592B":"和潤企業乙特","6958A":"日盛台駿甲特","8112A":"至上甲特","9941A":"裕融甲特","2254":"巨鎧精密-創","2258":"鴻華先進-創","2432":"倚天酷碁-創","3150":"鈺寶-創","4590":"富田-創","6534":"正瀚-創","6645":"金萬林-創","6771":"平和環保-創","6854":"錼創科技-KY創","6908":"宏碁遊戲-創","6921":"嘉雨思-創","6924":"榮惠-KY創","6949":"沛爾生醫-創","6951":"青新-創","6955":"邦睿生技-創","6969":"成信實業*-創","6988":"威力暘-創","7610":"聯友金屬-創","7631":"聚賢研發-創","7730":"暉盛-創","7740":"熙特爾-創","7823":"奧義賽博-KY創","8162":"微矽電子-創","8487":"愛爾達-創","0050":"元大台灣50","0051":"元大中型100","0052":"富邦科技","0053":"元大電子","0055":"元大MSCI金融","0056":"元大高股息","0057":"富邦摩台","0061":"元大寶滬深","006203":"元大MSCI台灣","006204":"永豐臺灣加權","006205":"富邦上証","006206":"元大上證50","006207":"復華滬深","006208":"富邦台50","00625K":"富邦上証+R","00631L":"元大台灣50正2","00632R":"元大台灣50反1","00633L":"富邦上証正2","00634R":"富邦上証反1","00635U":"期元大S&P黃金","00636":"國泰中國A50","00636K":"國泰中國A50+U","00637L":"元大滬深300正2","00638R":"元大滬深300反1","00639":"富邦深100","00640L":"富邦日本正2","00641R":"富邦日本反1","00642U":"期元大S&P石油","00643":"群益深証中小","00643K":"群益深証中小+R","00645":"富邦日本","00646":"元大S&P500","00647L":"元大S&P500正2","00648R":"元大S&P500反1","00650L":"復華香港正2","00651R":"復華香港反1","00652":"富邦印度","00653L":"富邦印度正2","00654R":"富邦印度反1","00655L":"國泰中國A50正2","00656R":"國泰中國A50反1","00657":"國泰日經225","00657K":"國泰日經225+U","00660":"元大歐洲50","00661":"元大日經225","00662":"富邦NASDAQ","00663L":"國泰臺灣加權正2","00664R":"國泰臺灣加權反1","00665L":"富邦恒生國企正2","00666R":"富邦恒生國企反1","00668":"國泰美國道瓊","00668K":"國泰美國道瓊+U","00669R":"國泰美國道瓊反1","00670L":"富邦NASDAQ正2","00671R":"富邦NASDAQ反1","00673R":"期元大S&P原油反1","00674R":"期元大S&P黃金反1","00675L":"富邦臺灣加權正2","00676R":"富邦臺灣加權反1","00678":"群益那斯達克生技","00680L":"元大美債20正2","00681R":"元大美債20反1","00682U":"期元大美元指數","00683L":"期元大美元指正2","00684R":"期元大美元指反1","00685L":"群益臺灣加權正2","00686R":"群益臺灣加權反1","00688L":"國泰20年美債正2","00689R":"國泰20年美債反1","00690":"兆豐藍籌30","00692":"富邦公司治理","00693U":"期街口S&P黃豆","00700":"富邦恒生國企","00701":"國泰股利精選30","00702":"國泰標普低波高息","00703":"台新MSCI中國","00706L":"期元大S&P日圓正2","00707R":"期元大S&P日圓反1","00708L":"期元大S&P黃金正2","00709":"富邦歐洲","00710B":"復華彭博非投等債","00711B":"復華彭博新興債","00712":"復華富時不動產","00713":"元大台灣高息低波","00714":"群益道瓊美國地產","00715L":"期街口S&P布蘭特油正2","00717":"富邦美國特別股","00728":"第一金工業30","00730":"富邦臺灣優質高息","00731":"復華富時高息低波","00733":"富邦臺灣中小","00735":"國泰臺韓科技","00736":"國泰新興市場","00737":"國泰AI機器人","00738U":"期元大道瓊白銀","00739":"元大MSCI A股","00752":"中信中國50","00753L":"中信中國50正2","00757":"統一FANG+","00762":"元大全球AI","00763U":"期街口道瓊銅","00770":"國泰北美科技","00771":"元大US高息特別股","00775B":"新光投等債15+","00783":"富邦中証500","00830":"國泰費城半導體","00850":"元大臺灣ESG永續","00851":"台新全球AI","00852L":"國泰美國道瓊正2","00861":"元大全球未來通訊","00865B":"國泰US短期公債","00875":"國泰網路資安","00876":"元大全球5G","00878":"國泰永續高股息","00881":"國泰台灣科技龍頭","00882":"中信中國高股息","00885":"富邦越南","00891":"中信關鍵半導體","00892":"富邦台灣半導體","00893":"國泰智能電動車","00894":"中信小資高價30","00895":"富邦未來車","00896":"中信綠能及電動車","00897":"富邦基因免疫生技","00898":"國泰基因免疫革命","00899":"FT潔淨能源","00900":"富邦特選高股息30","00901":"永豐智能車供應鏈","00902":"中信電池及儲能","00903":"富邦元宇宙","00904":"新光臺灣半導體30","00905":"FT臺灣SMART","00907":"永豐優息存股","00908":"富邦入息REITs+","00909":"國泰數位支付服務","00910":"第一金太空衛星","00911":"兆豐洲際半導體","00912":"中信臺灣智慧50","00913":"兆豐台灣晶圓製造","00915":"凱基優選高股息30","00916":"國泰全球品牌50","00917":"中信特選金融","00918":"大華優利高填息30","00919":"群益台灣精選高息","00920":"富邦ESG綠色電力","00921":"兆豐龍頭等權重","00922":"國泰台灣領袖50","00923":"群益台ESG低碳50","00924":"復華S&P500成長","00926":"凱基全球菁英55","00927":"群益半導體收益","00929":"復華台灣科技優息","00930":"永豐ESG低碳高息","00932":"兆豐永續高息等權","00934":"中信成長高股息","00935":"野村臺灣新科技50","00936":"台新永續高息中小","00938":"凱基優選30","00939":"統一台灣高息動能","00940":"元大台灣價值高息","00941":"中信上游半導體","00943":"兆豐電子高息等權","00944":"野村趨勢動能高息","00945B":"凱基美國非投等債","00946":"群益科技高息成長","00947":"台新臺灣IC設計","00949":"復華日本龍頭","00951":"台新日本半導體","00952":"凱基台灣AI50","00953B":"群益優選非投等債","00954":"中信日本半導體","00956":"中信日經高股息","00960":"野村全球航運龍頭","00961":"FT臺灣永續高息","00962":"台新AI優息動能","00963":"中信全球高股息","00964":"中信亞太高股息","00965":"元大航太防衛科技","00971":"野村美國研發龍頭","00972":"野村日本動能高息","009800":"中信NASDAQ","009801":"中信美國創新科技","009802":"富邦旗艦50","009803":"保德信市值動能50","009804":"聯邦台精彩50","009805":"新光美國電力基建","009808":"華南永昌優選50","009809":"富邦淨零ESG50","00980A":"主動野村臺灣優選","009810":"保德信全球藍籌","009811":"統一美國50","009812":"野村日本東證","009813":"貝萊德標普卓越50","009816":"凱基台灣TOP50","009817":"國泰日本不動產","009818":"華南永昌NASDAQxT","00981A":"主動統一台股增長","00981T":"平衡凱基雙核收息","00982A":"主動群益台灣強棒","00982D":"主動富邦動態入息","00982T":"平衡兆豐台美動能","00983A":"主動中信ARK創新","00983D":"主動富邦複合收益","00984A":"主動安聯台灣高息","00984D":"主動聯博全球非投","00985A":"主動野村台灣50","00985B":"群益ESG投等債0-5","00986A":"主動台新龍頭成長","00987A":"主動台新優勢成長","00988A":"主動統一全球創新","00989A":"主動摩根美國科技","00990A":"主動元大AI新經濟","00991A":"主動復華未來50","00992A":"主動群益科技創新","00993A":"主動安聯台灣","00994A":"主動第一金台股優","00995A":"主動中信台灣卓越","00996A":"主動兆豐台灣豐收","020000":"富邦特選蘋果N","020011":"統一微波高息20N","020012":"富邦行動通訊N","02001L":"富邦蘋果正二N","02001R":"富邦蘋果反一N","020020":"元大台股領航N","020028":"元大特選電動車N","020029":"元大ESG高股息N","020030":"統一智慧電動車N","020031":"統一IC設計臺灣N","020032":"元大綠能N","020034":"元大IC設計N","020036":"元大金融配息N","020037":"元大金融高股息N","020038":"元大ESG配息N","020039":"元大加權N","9103":"美德醫療-DR","910322":"康師傅-DR","9105":"泰金寶-DR","910861":"神州-DR","9110":"越南控-DR","911608":"明輝-DR","911622":"泰聚亨-DR","911868":"同方友友-DR","912000":"晨訊科-DR","9136":"巨騰-DR","01001T":"土銀富邦R1","01002T":"土銀國泰R1","01004T":"土銀富邦R2","01007T":"兆豐國泰R2","01009T":"王道圓滿R1","01010T":"京城樂富R1","006201":"元大富櫃50","00679B":"元大美債20年","00687B":"國泰20年美債","00687C":"國泰20年美債+櫃U","00694B":"富邦美債1-3年","00695B":"富邦美債7-10年","00696B":"富邦美債20年","00697B":"元大美債7-10","00719B":"元大美債1-3","00720B":"元大投資級公司債","00722B":"群益投資級電信債","00723B":"群益投資級科技債","00724B":"群益投資級金融債","00725B":"國泰投資級公司債","00726B":"國泰新興投等債","00727B":"國泰優選非投等債","00734B":"台新JPM新興債","00740B":"富邦全球投等債","00741B":"富邦全球非投等債","00746B":"富邦A級公司債","00749B":"凱基新興債10+","00750B":"凱基科技債10+","00751B":"元大AAA至A公司債","00754B":"群益AAA-AA公司債","00755B":"群益投資級公用債","00756B":"群益投等新興公債","00758B":"復華能源債","00759B":"復華製藥債","00760B":"復華新興企業債","00761B":"國泰A級公司債","00764B":"群益25年美債","00768B":"復華20年美債","00772B":"中信高評級公司債","00773B":"中信優先金融債","00777B":"凱基AAA至A公司債","00778B":"凱基金融債20+","00779B":"凱基美債25+","00780B":"國泰A級金融債","00781B":"國泰A級科技債","00782B":"國泰A級公用債","00785B":"富邦金融投等債","00786B":"元大10年IG銀行債","00787B":"元大10年IG醫療債","00788B":"元大10年IG電能債","00789B":"復華公司債A3","00791B":"復華信用債1-5","00792B":"群益A級公司債","00793B":"群益AAA-A醫療債","00795B":"中信美國公債20年","00799B":"國泰A級醫療債","00834B":"第一金金融債10+","00836B":"永豐10年A公司債","00838B":"永豐7-10年中國債","00840B":"凱基IG精選15+","00841B":"凱基AAA-AA公司債","00842B":"台新美元銀行債","00844B":"新光15年IG金融債","00845B":"富邦新興投等債","00846B":"富邦歐洲銀行債","00847B":"中信美國市政債","00848B":"中信新興亞洲債","00849B":"中信EM主權債0-5","00853B":"統一美債10年Aa-A","00856B":"永豐1-3年美公債","00857B":"永豐20年美公債","00858":"永豐美國500大","00859B":"群益0-1年美債","00860B":"群益1-5Y投資級債","00862B":"中信投資級公司債","00863B":"中信全球電信債","00864B":"中信美國公債0-1","00867B":"新光A-BBB電信債","00870B":"元大15年EM主權債","00877":"復華中國5G","00883B":"中信ESG投資級債","00884B":"中信低碳新興債","00886":"永豐美國科技","00887":"永豐中國科技50大","00888":"永豐台灣ESG","00890B":"凱基ESG BBB 債 15+","00928":"中信上櫃ESG 30","00931B":"統一美債20年","00933B":"國泰10Y+金融債","00937B":"群益ESG投等債20+","00942B":"台新美A公司債20+","00948B":"中信優息投資級債","00950B":"凱基A級公司債","00955":"中信日本商社","00957B":"兆豐US優選投等債","00958B":"永豐ESG銀行債15+","00959B":"大華投等美債15Y+","00966B":"統一ESG投等債15+","00967B":"元大優息美債","00968B":"元大優息投等債","00969B":"元大零息超長美債","00970B":"新光BBB投等債20+","009806":"台新標普500","009807":"台新標普科技精選","00980B":"台新特選IG債10+","00980D":"主動聯博投等入息","00980T":"平衡凱基美國TOP","009814":"富邦標普500","009815":"大華美國MAG7+","00981B":"第一金優選非投債","00981D":"主動中信非投等債","00982B":"FT投資級債20+","00983B":"大華優利美公債20","00984B":"大華優利美A債15","00985D":"主動貝萊德優投等","00986B":"FT金融債10+","00987B":"野村10+澳洲公債","00988B":"玉山嚴選非投債","00989B":"台新美國非投等債","020001":"富邦存股雙十N","020025":"統一亞洲半導體N","020027":"元大上櫃ESG成長N","020033":"統一恆生科期N","020035":"元大上櫃ESG高息N","020040":"元大上櫃ESG龍頭N","020041":"兆豐半導體氣候N","1240":"茂生農經","1259":"安心","1264":"德麥","1268":"漢來美食","1294":"漢田生技","1295":"生合","1336":"台翰","1565":"精華","1569":"濱川","1570":"力肯","1580":"新麥","1584":"精剛","1586":"和勤","1591":"駿吉-KY","1593":"祺驊","1595":"川寶","1599":"宏佳騰","1742":"台蠟","1777":"生泰","1781":"合世","1784":"訊聯","1785":"光洋科","1788":"杏昌","1796":"金穎生技","1799":"易威","1813":"寶利徠","1815":"富喬","2035":"唐榮","2061":"風青","2063":"世鎧","2064":"晉椿","2065":"世豐","2066":"世德","2067":"嘉鋼","2070":"精湛","2073":"雄順","2221":"大甲","2230":"泰茂","2235":"謚源","2596":"綠意","2640":"大車隊","2641":"正德","2643":"捷迅","2718":"全心投控","2719":"燦星旅","2724":"藝舍-KY","2726":"雅茗-KY","2729":"瓦城","2732":"六角","2734":"易飛網","2736":"富野","2740":"天蔥","2743":"山富","2745":"五福","2751":"王座","2752":"豆府","2754":"亞洲藏壽司","2755":"揚秦","2756":"聯發國際","2916":"滿心","2924":"宏太-KY","2926":"誠品生活","2937":"集雅社","2941":"米斯特","2947":"振宇五金","2948":"寶陞","2949":"欣新網","3064":"泰偉","3066":"李洲","3067":"全域","3071":"協禧","3073":"天方能源","3078":"僑威","3081":"聯亞","3083":"網龍","3085":"新零售","3086":"華義","3088":"艾訊","3093":"港建*","3095":"及成","3105":"穩懋","3114":"好德","3115":"富榮綱","3118":"進階","3122":"笙泉","3128":"昇銳","3131":"弘塑","3141":"晶宏","3147":"大綜","3152":"璟德","3158":"嘉實","3162":"精確","3163":"波若威","3169":"亞信","3171":"炎洲流通","3176":"基亞","3178":"公準","3188":"鑫龍騰","3191":"雲嘉南","3205":"佰研","3206":"志豐","3207":"耀勝","3211":"順達","3213":"茂訊","3217":"優群","3218":"大學光","3219":"倚強科","3221":"台嘉碩","3224":"三顧","3226":"龍鋒","3227":"原相","3228":"金麗科","3230":"錦明","3232":"昱捷","3234":"光環","3236":"千如","3252":"海灣","3259":"鑫創","3260":"威剛","3264":"欣銓","3265":"台星科","3268":"海德威","3272":"東碩","3276":"宇環","3284":"太普高","3285":"微端","3287":"廣寰科","3288":"點晶","3289":"宜特","3290":"東浦","3293":"鈊象","3294":"英濟","3297":"杭特","3303":"岱稜","3306":"鼎天","3310":"佳穎","3313":"斐成","3317":"尼克森","3322":"建舜電","3323":"加百裕","3324":"雙鴻","3325":"旭品","3332":"幸康","3339":"泰谷","3349":"寶德","3354":"律勝","3357":"臺慶科","3360":"尚立","3362":"先進光","3363":"上詮","3372":"典範","3373":"熱映","3374":"精材","3379":"彬台","3388":"崇越電","3390":"旭軟","3402":"漢科","3426":"台興","3430":"奇鈦科","3434":"哲固","3438":"類比科","3441":"聯一光","3444":"利機","3455":"由田","3465":"進泰電子","3466":"德晉","3467":"台灣精材","3479":"安勤","3483":"力致","3484":"崧騰","3489":"森寶","3490":"單井","3491":"昇達科","3492":"長盛","3498":"陽程","3499":"環天科","3508":"位速","3511":"矽瑪","3512":"皇龍","3516":"亞帝歐","3520":"華盈","3521":"台鋼建設","3522":"御嵿","3523":"迎輝","3526":"凡甲","3527":"聚積","3529":"力旺","3531":"先益","3537":"堡達","3540":"曜越","3541":"西柏","3546":"宇峻","3548":"兆利","3551":"世禾","3552":"同致","3555":"博士旺","3556":"禾瑞亞","3558":"神準","3564":"其陽","3567":"逸昌","3570":"大塚","3577":"泓格","3580":"友威科","3581":"博磊","3587":"閎康","3594":"磐儀","3597":"映興","3609":"三一東林","3611":"鼎翰","3615":"安可","3623":"富晶通","3624":"光頡","3625":"西勝","3628":"盈正","3629":"地心引力","3630":"新鉅科","3631":"晟楠","3632":"研勤","3646":"艾恩特","3663":"鑫科","3664":"安瑞-KY","3666":"光耀","3672":"康聯訊","3675":"德微","3680":"家登","3684":"榮昌","3685":"元創精密","3687":"歐買尬","3689":"湧德","3691":"碩禾","3693":"營邦","3707":"漢磊","3709":"鑫聯大投控","3710":"連展投控","3713":"新晶投控","4102":"永日","4105":"東洋","4107":"邦特","4109":"加捷生醫","4111":"濟生","4113":"聯上","4114":"健喬","4116":"明基醫","4120":"友華","4121":"優盛","4123":"晟德","4126":"太醫","4127":"天良","4128":"中天","4129":"聯合","4130":"健亞","4131":"浩泰","4138":"曜亞","4139":"馬光-KY","4147":"中裕","4153":"鈺緯","4154":"樂威科-KY","4157":"太景*-KY","4160":"訊聯基因","4161":"聿新科","4162":"智擎","4163":"鐿鈦","4166":"友霖","4167":"松瑞藥","4168":"醣聯","4171":"瑞基","4173":"久裕","4174":"浩鼎","4175":"杏一","4183":"福永生技","4188":"安克","4192":"杏國","4198":"欣大健康","4205":"中華食","4207":"環泰","4303":"信立","4304":"勝昱","4305":"世坤","4401":"東隆興","4402":"郡都開發","4406":"新昕纖","4413":"飛寶企業","4416":"三圓","4417":"金洲","4419":"皇家美食","4420":"光明","4430":"耀億","4432":"銘旺實","4433":"興采","4442":"竣邦-KY","4502":"健信","4503":"金雨","4506":"崇友","4510":"高鋒","4513":"福裕","4523":"永彰","4527":"方土霖","4528":"江興鍛","4529":"淳紳","4530":"宏易","4533":"協易機","4534":"慶騰","4535":"至興","4538":"大詠城","4541":"晟田","4542":"科嶠","4543":"萬在","4549":"桓達","4550":"長佳","4554":"橙的","4556":"旭然","4558":"寶緯","4561":"健椿","4563":"百德","4568":"科際精密","4577":"達航科技","4580":"捷流閥業","4584":"君帆","4609":"唐鋒","4702":"中美實","4706":"大恭","4707":"磐亞","4711":"永純","4714":"永捷","4716":"大立","4721":"美琪瑪","4726":"永昕","4728":"雙美","4729":"熒茂","4735":"豪展","4741":"泓瀚","4743":"合一","4744":"皇將","4745":"合富-KY","4747":"強生","4749":"新應材","4754":"國碳科","4760":"勤凱","4767":"誠泰科技","4768":"晶呈科技","4772":"台特化","4804":"大略-KY","4806":"桂田文創","4903":"聯光通","4905":"台聯電","4907":"富宇","4908":"前鼎","4909":"新復興","4911":"德英","4923":"力士","4924":"欣厚-KY","4931":"新盛力","4933":"友輝","4939":"亞電","4946":"辣椒","4950":"金耘國際","4951":"精拓科","4953":"緯軟","4966":"譜瑞-KY","4971":"IET-KY","4972":"湯石照明","4973":"廣穎","4974":"亞泰","4979":"華星光","4987":"科誠","4991":"環宇-KY","4995":"晶達","5009":"榮剛","5011":"久陽","5013":"強新","5014":"建錩","5015":"華祺","5016":"松和","5201":"凱衛","5202":"力新","5205":"中茂","5206":"坤悅","5209":"新鼎","5210":"寶碩","5211":"蒙恬","5212":"凌網","5213":"亞昕","5220":"萬達光電","5223":"安力-KY","5227":"立凱-KY","5228":"鈺鎧","5230":"雷笛克光學","5236":"凌陽創新","5245":"智晶","5251":"天鉞電","5263":"智崴","5272":"笙科","5274":"信驊","5276":"達輝-KY","5278":"尚凡*","5287":"數字","5289":"宜鼎","5291":"邑昇","5299":"杰力","5301":"寶得利","5302":"太欣","5309":"系統電","5310":"天剛","5312":"寶島科","5314":"世紀*","5315":"光聯","5321":"美而快","5324":"士開","5328":"華容","5340":"建榮","5344":"立衛","5345":"馥鴻","5347":"世界","5348":"正能量智能","5351":"鈺創","5353":"台林","5355":"佳總","5356":"協益","5364":"力麗店","5371":"中光電","5381":"合正","5386":"青雲","5392":"能率","5398":"慕康生醫","5403":"中菲","5410":"國眾","5425":"台半","5426":"振發","5432":"新門","5438":"東友","5439":"高技","5443":"均豪","5450":"南良","5452":"佶優","5455":"昇益","5457":"宣德","5460":"同協","5464":"霖宏","5465":"富驊","5468":"凱鈺","5474":"聰泰","5475":"德宏","5478":"智冠","5481":"新華","5483":"中美晶","5487":"通泰","5488":"松普","5489":"彩富","5490":"同亨","5493":"三聯","5498":"凱崴","5508":"永信建","5511":"德昌","5512":"力麒","5514":"三豐","5516":"雙喜","5520":"力泰","5523":"豐謙","5529":"鉅陞","5530":"龍巖","5536":"聖暉*","5543":"桓鼎-KY","5547":"久舜","5548":"安倉","5601":"台聯櫃","5603":"陸海","5604":"中連","5609":"中菲行","5701":"劍湖山","5703":"亞都","5704":"老爺知","5864":"致和證","5878":"台名","5902":"德記","5903":"全家","5904":"寶雅","5905":"南仁湖","6015":"宏遠證","6016":"康和證","6020":"大展證","6021":"美好證","6023":"元大期","6026":"福邦證","6101":"寬魚國際","6103":"合邦","6104":"創惟","6109":"亞元","6111":"光聚晶電","6113":"亞矽","6114":"久威","6118":"建達","6121":"新普","6122":"擎邦","6123":"上奇","6124":"業強","6125":"廣運","6126":"信音","6127":"九豪","6129":"普誠","6130":"上亞科技","6134":"萬旭","6138":"茂達","6140":"訊達","6143":"振曜","6144":"得利影","6146":"耕興","6147":"頎邦","6148":"驊宏資","6150":"撼訊","6151":"晉倫","6154":"順發","6156":"松上","6158":"禾昌","6160":"欣技","6161":"捷波","6163":"華電網","6167":"久正","6169":"昱泉","6170":"統振","6171":"大城地產","6173":"信昌電","6174":"安碁","6175":"立敦","6179":"亞通","6180":"橘子","6182":"合晶","6185":"幃翔","6186":"新潤","6187":"萬潤","6188":"廣明","6190":"萬泰科","6194":"育富","6195":"詩肯","6198":"瑞築","6199":"天品","6203":"海韻電","6204":"艾華","6207":"雷科","6208":"日揚","6210":"慶生","6212":"理銘","6217":"中探針","6218":"豪勉","6219":"富旺","6220":"岳豐","6221":"晉泰","6222":"立軒","6223":"旺矽","6227":"茂綸","6228":"全譜","6229":"研通","6231":"系微","6233":"旺玖","6234":"高僑","6236":"中湛","6237":"驊訊","6240":"松崗","6241":"易通展","6242":"立康","6244":"茂迪","6245":"立端","6246":"臺龍","6248":"沛波","6259":"百徽","6261":"久元","6263":"普萊德","6264":"富裔","6265":"方土昶","6266":"泰詠","6270":"倍微","6274":"台燿","6275":"元山","6276":"安鈦克","6279":"胡連","6284":"佳邦","6290":"良維","6291":"沛亨","6292":"迅德","6294":"智基","6411":"晶焱","6417":"韋僑","6418":"詠昇","6419":"京晨科","6423":"億而得","6425":"易發","6432":"今展科","6435":"大中","6441":"廣錠","6461":"益得","6462":"神盾","6465":"威潤","6469":"大樹","6470":"宇智","6474":"華豫寧","6482":"弘煜科","6485":"點序","6486":"互動","6488":"環球晶","6492":"生華科","6494":"九齊","6496":"科懋","6498":"久禾光","6499":"益安","6506":"雙邦","6508":"惠光","6509":"聚和","6510":"精測","6512":"啟發電","6516":"勤崴國際","6517":"保勝光學","6523":"達爾膚","6527":"明達醫","6530":"創威","6532":"瑞耘","6535":"順藥","6538":"倉和","6542":"隆中","6546":"正基","6547":"高端疫苗","6548":"長科*","6556":"勝品","6560":"欣普羅","6561":"是方","6568":"宏觀","6569":"醫揚","6570":"維田","6574":"霈方","6576":"逸達","6577":"勁豐","6578":"達邦蛋白","6584":"南俊國際","6588":"東典光電","6590":"普鴻","6593":"台灣銘板","6596":"寬宏藝術","6597":"立誠","6603":"富強鑫","6609":"瀧澤科","6612":"奈米醫材","6613":"朋億*","6615":"慧智","6616":"特昇-KY","6617":"共信-KY","6620":"漢達","6624":"萬年清","6629":"泰金-KY","6637":"醫影","6640":"均華","6642":"富致","6643":"M31","6649":"台生材","6651":"全宇昕","6654":"天正國際","6661":"威健生技","6662":"樂斯科","6664":"群翊","6667":"信紘科","6679":"鈺太","6680":"鑫創電子","6683":"雍智科技","6684":"安格","6690":"安碁資訊","6692":"進能服","6693":"廣閎科","6697":"東捷資訊","6703":"軒郁","6708":"天擎","6712":"長聖","6716":"應廣","6720":"久昌","6721":"信實","6725":"矽科宏晟","6727":"亞泰金屬","6728":"上洋","6730":"常廣","6732":"昇佳電子","6733":"博晟生醫","6735":"美達科技","6739":"竹陞科技","6741":"91APP*-KY","6751":"智聯服務","6752":"叡揚","6761":"穩得","6762":"達亞","6763":"綠界科技*","6767":"台微醫","6785":"昱展新藥","6788":"華景電","6791":"虎門科技","6803":"崑鼎","6804":"明係","6811":"宏碁資訊","6821":"聯寶","6823":"濾能","6829":"千附精密","6840":"東研信超","6841":"長佳智能","6843":"進典","6844":"諾貝兒","6846":"綠茵","6855":"數泓科","6856":"鑫傳","6859":"伯特光","6865":"偉康科技","6870":"騰雲","6872":"浩宇生醫","6874":"倍力","6875":"國邑*","6877":"鏵友益","6881":"潤德","6884":"海柏特","6894":"衛司特","6895":"宏碩系統","6899":"創為精密","6903":"巨漢","6904":"伯鑫","6907":"雅特力-KY","6910":"德鴻","6913":"鴻呈","6922":"宸曜","6925":"意藍","6929":"佑全","6953":"家碩","6961":"旅天下","6967":"汎瑋材料","6968":"萬達寵物","6971":"惠民實業","6982":"大井泵浦","6996":"力領科技","6997":"博弘","7402":"邑錡","7547":"碩網","7556":"意德士","7584":"樂意","7642":"昶瑞機電","7703":"銳澤","7704":"明遠精密","7708":"全家餐飲","7709":"榮田","7712":"博盛半導體","7713":"威力德生醫","7714":"創泓科技","7715":"裕山","7716":"昱臺國際","7717":"萊德光電-KY","7718":"友鋮","7723":"築間","7728":"光焱科技","7734":"印能科技","7738":"東聯互動","7743":"金利食安","7744":"崴寶","7747":"昕奇雲端","7751":"竑騰","7753":"星亞","7757":"金色三麥","7767":"仁大資訊","7770":"君曜","7777":"能率亞洲","7782":"光速火箭","7792":"安葆","7805":"威聯通","7810":"捷創科技","7811":"民盛","8024":"佑華","8027":"鈦昇","8032":"光菱","8034":"榮群","8038":"長園科","8040":"九暘","8042":"金山電","8043":"蜜望實","8044":"網家","8047":"星雲","8048":"德勝","8049":"晶采","8050":"廣積","8054":"安國","8059":"凱碩","8064":"東捷","8066":"來思達","8067":"志旭","8068":"全達","8069":"元太","8071":"能率網通","8074":"鉅橡","8076":"伍豐","8077":"洛碁","8080":"泰霖","8083":"瑞穎","8084":"巨虹","8085":"福華","8086":"宏捷科","8087":"麗升能源","8088":"品安","8089":"康全電訊","8091":"翔名","8092":"建暐","8093":"保銳","8096":"擎亞","8097":"常珵","8099":"大世科","8102":"傑霖科技","8107":"大億金茂","8109":"博大","8111":"立碁","8121":"越峰","8147":"正淩","8155":"博智","8171":"天宇","8176":"智捷","8182":"加高","8183":"精星","8227":"巨有科技","8234":"新漢","8240":"華宏","8255":"朋程","8272":"全景軟體","8277":"商丞","8279":"生展","8284":"三竹","8289":"泰藝","8291":"尚茂","8299":"群聯","8342":"益張","8349":"恒耀","8354":"冠好","8358":"金居","8383":"千附","8390":"金益鼎","8401":"白紗科","8403":"盛弘","8409":"商之器","8410":"森田","8415":"大國鋼","8416":"實威","8421":"旭源","8423":"保綠-KY","8424":"惠普","8426":"紅木-KY","8431":"匯鑽科","8432":"東生華","8433":"弘帆","8435":"鉅邁","8436":"大江","8437":"大地-KY","8440":"綠電","8444":"綠河-KY","8446":"華研","8450":"霹靂","8455":"大拓-KY","8472":"夠麻吉","8477":"創業家","8489":"三貝德","8905":"裕國","8906":"花王","8908":"欣雄","8916":"光隆","8917":"欣泰","8921":"沈氏","8923":"時報","8924":"大田","8927":"北基","8928":"鉅明","8929":"富堡","8930":"青鋼","8931":"大汽電","8932":"智通*","8933":"愛地雅","8935":"邦泰","8936":"國統","8937":"合騏","8938":"明安","8941":"關中","8942":"森鉅","9949":"琉園","9950":"萬國通","9951":"皇田","9960":"邁達康","9962":"有益","8349A":"恒耀甲特"}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+<script src="config.js"></script>
+<script>
+(function(){
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const today=()=>new Date().toLocaleDateString('sv-SE');
+const addYears=(d,y)=>{const t=new Date(d+'T00:00:00');t.setFullYear(t.getFullYear()+y);return t.toLocaleDateString('sv-SE')};
+const DEF={goal:1000000,start:today(),end:addYears(today(),2),names:['Nicole','HSIAO'],discount:1,minFee:20};
+const S={trades:[],deposits:[],prices:{},config:null,loaded:{t:0,d:0,p:0,c:0},tab:'home',filter:'all',side:'buy',by:0,kind:'trade',editT:null,editD:null,feeTouched:false,taxTouched:false};
+
+const cfg=()=>{const c=Object.assign({},DEF,S.config||{});if(!Array.isArray(c.names)||c.names.length<2)c.names=DEF.names;return c};
+
+const fmt=n=>Math.round(n||0).toLocaleString('zh-TW');
+const money=n=>(n<0?'−$':'$')+fmt(Math.abs(n));
+const smoney=n=>(n>0?'+$':n<0?'−$':'$')+fmt(Math.abs(n));
+const pct=(n,d=2)=>(n>0?'+':n<0?'−':'')+Math.abs(n*100).toFixed(d)+'%';
+const cls=n=>n>0?'up':n<0?'down':'';
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const cleanCode=s=>String(s||'').trim().toUpperCase().replace(/[^A-Z0-9._-]/g,'');
+const initial=n=>{n=String(n||'');return /^[A-Za-z]/.test(n)?n[0].toUpperCase():n.slice(-1)};
+
+let toastT;function toast(m){const t=$('#toast');t.textContent=m;t.hidden=false;clearTimeout(toastT);toastT=setTimeout(()=>t.hidden=true,2400)}
+function lsGet(k){try{return localStorage.getItem(k)}catch(e){return null}}
+function lsSet(k,v){try{v==null?localStorage.removeItem(k):localStorage.setItem(k,v)}catch(e){}}
+
+/* ---------- compute ---------- */
+function compute(){
+  const c=cfg();
+  const ev=[...S.deposits.map(d=>({...d,kind:'dep'})),...S.trades.map(t=>({...t,kind:'trade'}))]
+    .sort((a,b)=>(a.date||'').localeCompare(b.date||'')||(a.createdAt||0)-(b.createdAt||0));
+  let cash=0,totalIn=0,totalOut=0,realized=0,divs=0;const h={};
+  for(const e of ev){
+    if(e.kind==='dep'){const t=e.type||'in';if(t==='div'){const a=+e.amount||0;cash+=a;divs+=a;realized+=a;if(e.code){const q=h[e.code]||(h[e.code]={code:e.code,name:e.name||'',shares:0,cost:0,lastPrice:0,lastDate:'',bSh:0,sSh:0,real:0,div:0});q.div+=a;if(e.name&&!q.name)q.name=e.name}continue}const a=(+e.perPerson||0)*2;if(t==='out'){cash-=a;totalOut+=a}else{cash+=a;totalIn+=a}continue}
+    const code=e.code;if(!code)continue;
+    const p=h[code]||(h[code]={code,name:'',shares:0,cost:0,lastPrice:0,lastDate:'',bSh:0,sSh:0,real:0,div:0});
+    if(e.name)p.name=e.name;
+    const sh=+e.shares||0,pr=+e.price||0,fee=+e.fee||0,tax=+e.tax||0,gross=sh*pr;
+    if(e.side==='buy'){const tot=gross+fee;cash-=tot;p.shares+=sh;p.cost+=tot;p.bSh+=sh}
+    else if(e.side==='sell'){const net=gross-fee-tax;cash+=net;const avg=p.shares?p.cost/p.shares:0;const q=Math.min(sh,p.shares);const cb=avg*q;realized+=net-cb;p.real+=net-cb;p.sSh+=sh;p.cost-=cb;p.shares-=sh;if(p.shares<=0){p.shares=0;p.cost=0}}
+    else if(e.side==='div'){const a=+e.amount||0;cash+=a;divs+=a;realized+=a;p.div+=a}
+    if(e.side!=='div'&&pr&&(e.date||'')>=p.lastDate){p.lastPrice=pr;p.lastDate=e.date||''}
+  }
+  const holdings=Object.values(h).filter(p=>p.shares>0).map(p=>{
+    let price=p.lastPrice,pdate=p.lastDate;const m=S.prices[p.code];
+    if(m&&+m.price>0&&(m.date||'')>=pdate){price=+m.price;pdate=m.date}
+    const mv=p.shares*price;return{...p,price,pdate,mv,avg:p.cost/p.shares,unreal:mv-p.cost};
+  }).sort((a,b)=>b.mv-a.mv);
+  const allPos=Object.values(h).map(p=>{const hd=holdings.find(x=>x.code===p.code);const un=hd?hd.unreal:0;return{...p,status:p.shares>0?'持有中':'已出清',unreal:un,totalPL:p.real+p.div+un}});
+  const mv=holdings.reduce((s,x)=>s+x.mv,0),total=cash+mv,netIn=totalIn-totalOut,pnl=total-netIn,ret=netIn>0?pnl/netIn:0;
+  const prog=Math.max(0,Math.min(1,total/c.goal));
+  const t0=new Date(c.start+'T00:00:00'),t1=new Date(c.end+'T00:00:00'),now=new Date();
+  const span=Math.max(1,t1-t0),timeProg=Math.max(0,Math.min(1,(now-t0)/span));
+  const monthsLeft=Math.max(0,(t1-now)/(1000*60*60*24*30.44));
+  const left=Math.max(0,c.goal-total);
+  const needEach=monthsLeft>0?left/monthsLeft/2:left/2;
+  return{c,cash,totalIn,totalOut,netIn,realized,divs,holdings,allPos,mv,total,pnl,ret,prog,timeProg,monthsLeft,left,needEach};
+}
+
+/* ---------- render ---------- */
+function render(){
+  if(!S.loaded.t||!S.loaded.d)return;
+  const R=compute(),c=R.c;
+  $('#av1').textContent=initial(c.names[0]);$('#av2').textContent=initial(c.names[1]);
+  $('.brand small').textContent=c.names[0]+' & '+c.names[1]+' 的共同帳本';
+  $('#s-total').textContent=money(R.total);
+  const p=$('#s-pnl');p.textContent=smoney(R.pnl);p.className='num '+cls(R.pnl);
+  const rt=$('#s-ret');rt.textContent=pct(R.ret);rt.className='pill '+cls(R.ret);
+  $('#s-in').textContent=money(R.netIn);$('#s-inout').textContent=R.totalOut?`存 ${money(R.totalIn)}・領 ${money(R.totalOut)}`:'';$('#s-cash').textContent=money(R.cash);$('#s-div').textContent=money(R.divs);$('#s-mv').textContent=money(R.mv);
+  const rl=$('#s-real');rl.textContent=smoney(R.realized);rl.className='v num '+cls(R.realized);
+  $('#s-each').textContent=money(R.total/2);
+  const ep=$('#s-eachpnl');ep.textContent=smoney(R.pnl/2);ep.className='num '+cls(R.pnl);
+  $('#h-prog').textContent=(R.prog*100).toFixed(1)+'%';
+  $('#h-goal').textContent=c.goal%10000===0?(c.goal/10000)+' 萬':money(c.goal);
+  $('#h-left').textContent=money(R.left);
+  const ahead=R.prog-R.timeProg;
+  const pace=$('#h-pace');
+  pace.querySelector('i').style.background=R.prog>=1?'var(--leaf)':ahead>=0?'var(--leaf)':'var(--accent)';
+  pace.querySelector('span').textContent=R.prog>=1?'到家了！目標達成':'時間過了 '+(R.timeProg*100).toFixed(0)+'%，'+(ahead>=0?'領先 '+(ahead*100).toFixed(1)+' 個百分點':'落後 '+(-ahead*100).toFixed(1)+' 個百分點');
+  $('#h-need span').textContent=R.prog>=1?'🎉':'不計報酬，每人每月要再存約 '+money(R.needEach);
+  renderHoldings(R);
+  if(S.tab==='home')drawHill(R);
+  renderRecords();
+  renderByChips();
+  $('#codes').innerHTML=Object.values(knownCodes()).map(x=>`<option value="${esc(x.code)}">${esc(x.name)}</option>`).join('');
+}
+
+/* ---------- scene ---------- */
+const NS='http://www.w3.org/2000/svg';
+const SC={built:false,L:0,stage:null};
+function rng(seed){let s=seed>>>0;return()=>{s=(s*1664525+1013904223)>>>0;return s/4294967296}}
+function svgEl(tag,attrs,parent){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e}
+function buildScene(){
+  if(SC.built)return;const tr=$('#trail');let L=0;try{L=tr.getTotalLength()}catch(e){}if(!L)return;
+  SC.built=true;SC.L=L;$('#trail2').setAttribute('d',tr.getAttribute('d'));
+  const pts=[];for(let i=0;i<=L;i+=4)pts.push(tr.getPointAtLength(i));
+  const nearTrail=(x,y,d)=>pts.some(p=>(p.x-x)**2+(p.y-y)**2<d*d);
+  const mtn=$('#l-mtn'),r=rng(7);
+  const inside=(x,y)=>{try{return mtn.isPointInFill(new DOMPoint(x,y))}catch(e){return y>250-(x<260?(x/260)*200:200-(x-260)*1.2)}};
+  // stars
+  const st=$('#stars');for(let i=0;i<46;i++){const c=svgEl('circle',{cx:(r()*360).toFixed(1),cy:(r()*120).toFixed(1),r:(.3+r()*.7).toFixed(2),fill:'#FFFFFF'},st);if(i%3===0){c.setAttribute('class','twinkle');c.style.animationDelay=(r()*3).toFixed(2)+'s'}}
+  // rocks near summit
+  const rk=$('#rocks');[[232,60,9],[300,64,8],[214,82,7],[318,78,6],[250,52,6]].forEach(([x,y,s])=>{svgEl('path',{d:`M${x-s} ${y+2} L${x-s*.5} ${y-s*.55} L${x+s*.3} ${y-s*.7} L${x+s} ${y+2}Z`,fill:'#8C928A'},rk);svgEl('path',{d:`M${x-s*.5} ${y-s*.55} L${x+s*.3} ${y-s*.7} L${x+s*.1} ${y-s*.2}Z`,fill:'#B3B8AE'},rk)});
+  // trees
+  const tg=$('#trees'),trees=[];
+  for(let i=0;i<900&&trees.length<70;i++){
+    const x=r()*360,y=60+r()*185;
+    if(!inside(x,y+1)||nearTrail(x,y,8)||(x>238&&x<292&&y<52))continue;
+    if(y<78&&r()<.7)continue;
+    if(trees.some(t=>Math.abs(t.x-x)<4.5&&Math.abs(t.y-y)<3.5))continue;
+    trees.push({x,y});
+  }
+  trees.sort((a,b)=>a.y-b.y).forEach(({x,y})=>{
+    const s=3.2+(y-60)/185*6.5,g=svgEl('g',{},tg);
+    if(y>150&&r()<.25){
+      svgEl('rect',{x:x-.5,y:y-s*.7,width:1,height:s*.7,fill:'#5A4030'},g);
+      svgEl('ellipse',{cx:x,cy:y-s*.95,rx:s*.62,ry:s*.55,fill:'#4C8A4F'},g);
+      svgEl('ellipse',{cx:x-s*.18,cy:y-s*1.08,rx:s*.34,ry:s*.28,fill:'#6DA866'},g);
+    }else{
+      const dk=['#2E6A42','#2A6040','#35744A'][Math.floor(r()*3)],lt=['#4C8F5C','#4F9660','#5A9D63'][Math.floor(r()*3)];
+      svgEl('rect',{x:x-.45,y:y-1.6,width:.9,height:1.8,fill:'#5A4030'},g);
+      [[.58,0,1.15],[.44,.45,1.55],[.3,.9,1.95]].forEach(([w,b,t])=>{
+        svgEl('path',{d:`M${x-s*w} ${y-1-s*b} L${x} ${y-s*t} L${x+s*w} ${y-1-s*b}Z`,fill:dk},g);
+        svgEl('path',{d:`M${x-s*w} ${y-1-s*b} L${x} ${y-s*t} L${x} ${y-1-s*b}Z`,fill:lt},g);
+      });
+    }
+  });
+  // grass tufts + foreground bushes
+  const fg=$('#fore');
+  for(let i=0;i<46;i++){const x=r()*360,y=200+r()*48;if(!inside(x,y)&&y<236)continue;if(nearTrail(x,y,6))continue;svgEl('path',{d:`M${x-1.4} ${y} l1.4 -2.6 l1.4 2.6 M${x} ${y} l0 -3.2`,stroke:'#4E8A50','stroke-width':.6,fill:'none'},fg)}
+  [[18,242,10],[64,244,7],[150,246,9],[214,243,8],[300,244,11],[344,240,8]].forEach(([x,y,s])=>{svgEl('ellipse',{cx:x,cy:y,rx:s,ry:s*.55,fill:'#2C5A34'},fg);svgEl('ellipse',{cx:x-s*.25,cy:y-s*.18,rx:s*.6,ry:s*.35,fill:'#3E7444'},fg)});
+  [[100,247,4],[256,246,3.5]].forEach(([x,y,s])=>{svgEl('ellipse',{cx:x,cy:y,rx:s,ry:s*.6,fill:'#8C928A'},fg);svgEl('ellipse',{cx:x-s*.3,cy:y-s*.25,rx:s*.5,ry:s*.25,fill:'#B3B8AE'},fg)});
+  // signs + hikers
+  const sg=$('#signs');
+  [0.25,0.5,0.75].forEach((f,i)=>{
+    const p=tr.getPointAtLength(f*L),g=svgEl('g',{class:'sign','data-i':i+1,transform:`translate(${(p.x+7).toFixed(1)},${(p.y+1).toFixed(1)})`},sg);
+    g.innerHTML=`<title>第 ${i+1} 個告示牌</title><rect x="-.7" y="-14" width="1.4" height="14" fill="#6B4A2F"/><rect class="board" x="-11" y="-22" width="22" height="9" rx="1.5"/><text x="0" y="-15.7" text-anchor="middle"></text><g class="check"><circle cx="10.5" cy="-22" r="3.2" fill="#3F9F62"/><path d="M9.1 -22 l1 1 l1.9 -2" stroke="#FFFFFF" stroke-width=".9" fill="none"/></g>`;
+    g.addEventListener('click',()=>{if(g.classList.contains('done'))celebrate(i+1)});
+  });
+  $('#hikers').innerHTML=hiker('hk2',{shirt:'#3F7FD0',pack:'#6B8E4E',roll:'#D9C08A',pants:'#3A4652',head:'cap',hat:'#F0B23F'})+hiker('hk1',{shirt:'#E5636A',pack:'#F2B84B',roll:'#8EB6D9',pants:'#4A3F4E',head:'pony',hat:'#3A2A22'});
+  applyTime();setInterval(applyTime,5*60*1000);
+}
+function hiker(id,c){
+  const head=c.head==='cap'
+    ?`<path d="M-2.7 -21.2 Q.5 -25.4 3.7 -21.2Z" fill="${c.hat}"/><path d="M3 -21.3 L6.2 -20.9" stroke="${c.hat}" stroke-width="1.1" stroke-linecap="round"/>`
+    :`<path d="M-2.7 -20.4 Q-.2 -25.4 3.7 -21.6 Q1.2 -22.7 -2.7 -20.4Z" fill="${c.hat}"/><path d="M-2.4 -21.2 q-2.8 .8 -2.6 3.6" stroke="${c.hat}" stroke-width="1.5" fill="none" stroke-linecap="round"/>`;
+  return`<g class="mover" id="${id}"><g class="face"><g class="hk walk">
+    <path class="leg b" d="M-.5 -8.6 L-1.1 0" stroke="${c.pants}" stroke-width="2.2" stroke-linecap="round"/>
+    <path class="leg" d="M.7 -8.6 L1.3 0" stroke="${c.pants}" stroke-width="2.2" stroke-linecap="round"/>
+    <g class="torso">
+      <rect x="-5.8" y="-17.6" width="4.8" height="8.2" rx="1.6" fill="${c.pack}"/>
+      <rect x="-5.6" y="-19.3" width="4.2" height="2" rx="1" fill="${c.roll}"/>
+      <path d="M-2 -17.2 Q.3 -18.7 2.6 -17.2 L2.4 -8.6 L-2 -8.6Z" fill="${c.shirt}"/>
+      <circle cx=".6" cy="-20.6" r="3.1" fill="#F2C9A5"/>${head}
+      <circle cx="2.3" cy="-20.6" r=".45" fill="#2A2A2A"/>
+      <g class="arm"><path d="M1.1 -16 L4.4 -11.8" stroke="${c.shirt}" stroke-width="1.8" stroke-linecap="round"/><line x1="4.4" y1="-12.2" x2="6.8" y2=".4" stroke="#5B5F63" stroke-width=".7"/></g>
+    </g></g></g>
+    <g class="tag"><rect rx="3.6" height="7.4" fill="#FFFFFF" opacity=".9"/><text class="tagtxt" text-anchor="middle"></text></g></g>`;
+}
+function placeHikers(prog){
+  const tr=$('#trail'),L=SC.L;if(!L)return;
+  const pos=len=>{len=Math.max(1,Math.min(L-1,len));const p=tr.getPointAtLength(len),a=tr.getPointAtLength(len-1),b=tr.getPointAtLength(len+1);return{x:p.x,y:p.y,left:b.x<a.x}};
+  const lead=Math.max(18,Math.min(L,prog*L)),c=cfg();
+  [['hk1',lead,c.names[0],-30],['hk2',lead-15,c.names[1],-30]].forEach(([id,len,name,ty],k)=>{
+    const p=pos(len),g=$('#'+id);
+    g.style.transform=`translate(${p.x.toFixed(1)}px,${p.y.toFixed(1)}px) scale(1.15)`;
+    g.querySelector('.face').setAttribute('transform',p.left?'scale(-1,1)':'');
+    const t=g.querySelector('.tagtxt'),rc=g.querySelector('.tag rect'),w=Math.max(18,String(name).length*4.2+8);
+    t.textContent=name;t.setAttribute('y',k?14.2:ty+5.3);rc.setAttribute('x',-w/2);rc.setAttribute('width',w);rc.setAttribute('y',k?9:ty);
+  });
+}
+function hexToRgb(h){h=h.replace('#','');return[0,2,4].map(i=>parseInt(h.slice(i,i+2),16))}
+function mix(a,b,t){const A=hexToRgb(a),B=hexToRgb(b);return'#'+A.map((v,i)=>Math.round(v+(B[i]-v)*t).toString(16).padStart(2,'0')).join('')}
+const SKY=[
+  {h:0,a:'#0B1530',b:'#1F2D52',tint:'#1A2550',op:.55,star:1,cloud:'#3A4566'},
+  {h:4.5,a:'#141E44',b:'#3B3F70',tint:'#2A2E66',op:.48,star:.8,cloud:'#4A5076'},
+  {h:5.8,a:'#4B5E9C',b:'#F0A884',tint:'#E07A5F',op:.26,star:.2,cloud:'#F2B9A0'},
+  {h:7,a:'#79AEE0',b:'#FBE0B6',tint:'#FFC38A',op:.12,star:0,cloud:'#FFF1DF'},
+  {h:9,a:'#5BA6E6',b:'#D3ECF8',tint:'#FFFFFF',op:0,star:0,cloud:'#FFFFFF'},
+  {h:14.5,a:'#4F9DE2',b:'#CBE7F6',tint:'#FFFFFF',op:0,star:0,cloud:'#FFFFFF'},
+  {h:16.3,a:'#6AA1D6',b:'#F5D9A8',tint:'#FFB867',op:.12,star:0,cloud:'#FFF0D6'},
+  {h:17.3,a:'#6E7EBE',b:'#F59E62',tint:'#F08A4B',op:.24,star:0,cloud:'#F8C49A'},
+  {h:18.3,a:'#3D4482',b:'#DF7A6A',tint:'#B9506A',op:.36,star:.25,cloud:'#C88A93'},
+  {h:19.4,a:'#1B2655',b:'#4E3F72',tint:'#252A60',op:.5,star:.75,cloud:'#4E4E78'},
+  {h:21,a:'#0E1834',b:'#1F2C52',tint:'#1A2550',op:.55,star:1,cloud:'#3A4566'},
+  {h:24,a:'#0B1530',b:'#1F2D52',tint:'#1A2550',op:.55,star:1,cloud:'#3A4566'}];
+function phaseName(h){return h<4?'深夜':h<6?'黎明':h<8?'清晨':h<11?'早晨':h<14?'中午':h<16?'午後':h<18?'黃昏':h<20?'傍晚':'夜晚'}
+function applyTime(){
+  const now=new Date(),h=now.getHours()+now.getMinutes()/60;
+  let i=0;while(i<SKY.length-2&&SKY[i+1].h<=h)i++;
+  const A=SKY[i],B=SKY[i+1],t=(h-A.h)/(B.h-A.h),lerp=(x,y)=>x+(y-x)*t;
+  $('#sky-a').setAttribute('stop-color',mix(A.a,B.a,t));$('#sky-b').setAttribute('stop-color',mix(A.b,B.b,t));
+  const tint=$('#tint');tint.setAttribute('fill',mix(A.tint,B.tint,t));tint.setAttribute('opacity',lerp(A.op,B.op).toFixed(3));
+  $('#stars').setAttribute('opacity',lerp(A.star,B.star).toFixed(2));
+  $('#clouds').setAttribute('fill',mix(A.cloud,B.cloud,t));$('#clouds').setAttribute('opacity',h<5||h>20?.45:.9);
+  const day=h>=5.6&&h<=18.6;
+  const arc=f=>({x:24+f*312,y:150-Math.sin(Math.PI*f)*118});
+  const sun=$('#sun'),moon=$('#moon');
+  if(day){const p=arc((h-5.6)/13);sun.setAttribute('transform',`translate(${p.x.toFixed(1)},${p.y.toFixed(1)})`);sun.style.display='';moon.style.display='none';
+    const low=Math.min(1,Math.abs(h-12.1)/6.5);$('#sun-core').setAttribute('fill',mix('#FFF8E0','#FFB070',Math.max(0,(low-.6)/.4)))}
+  else{const hh=h<12?h+24:h,p=arc((hh-18.6)/11);moon.setAttribute('transform',`translate(${p.x.toFixed(1)},${p.y.toFixed(1)})`);moon.style.display='';sun.style.display='none'}
+  $('#birds').style.display=h>=6.5&&h<=17.5?'':'none';
+  const dark=h<6.2||h>17.6;$('#win-lit').setAttribute('opacity',dark?1:0);$('#glow').setAttribute('opacity',dark?1:0);
+  $('#timechip').textContent=String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0')+'・'+phaseName(h);
+}
+function drawHill(R){
+  buildScene();if(!SC.built)return;
+  placeHikers(R.prog);
+  const c=R.c,wan=v=>(v%10000===0?v/10000:(v/10000).toFixed(1))+'萬';
+  $('#flag-t').textContent=wan(c.goal);
+  $$('#signs .sign').forEach(g=>{const i=+g.dataset.i;g.querySelector('text').textContent=wan(c.goal*i/4);g.classList.toggle('done',R.prog>=i/4-1e-9)});
+  const stage=Math.min(4,Math.floor(R.prog*4+1e-9)),last=lsGet('nh-stage');
+  if(last===null)lsSet('nh-stage',String(stage));
+  else if(stage>+last){lsSet('nh-stage',String(stage));setTimeout(()=>celebrate(stage),900)}
+  else if(stage<+last)lsSet('nh-stage',String(stage));
+}
+let celT;
+function celebrate(stage){
+  const c=cfg(),n=c.names,goalW=v=>(v%10000===0?v/10000:(v/10000).toFixed(1))+' 萬';
+  const subs=[`${n[1]}：我們真的做到了！`,`${n[0]}：下一個告示牌見！`,`${n[0]} & ${n[1]} 一起歡呼`,`${n[1]}：休息一下，繼續往上爬`];
+  $('#cel-t').textContent=stage>=4?`抵達山頂！${goalW(c.goal)}達成`:`達成 ${goalW(c.goal*stage/4)}！`;
+  $('#cel-s').textContent=stage>=4?'小木屋的燈一直為我們開著':subs[Math.floor(Math.random()*subs.length)];
+  const cel=$('#celebrate');cel.classList.add('show');
+  $$('#hikers .hk').forEach(h=>{h.classList.remove('walk');h.classList.add('cheer')});
+  const cf=$('#confetti');cf.innerHTML='';
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+    const cols=['#F0B23F','#E5636A','#3F7FD0','#5AB46E','#FFFFFF','#B07CE0'],n2=stage>=4?110:70;
+    for(let i=0;i<n2;i++){const e=svgEl('rect',{x:(Math.random()*360).toFixed(1),y:(-10-Math.random()*30).toFixed(1),width:2.4,height:4,fill:cols[i%cols.length],rx:.5},cf);
+      e.style.setProperty('--dx',((Math.random()-.5)*60).toFixed(0)+'px');e.style.setProperty('--rot',((Math.random()-.5)*720).toFixed(0)+'deg');e.style.animationDelay=(Math.random()*.8).toFixed(2)+'s';e.style.transformBox='fill-box';e.style.transformOrigin='center'}
+  }
+  clearTimeout(celT);celT=setTimeout(()=>{cel.classList.remove('show');$$('#hikers .hk').forEach(h=>{h.classList.remove('cheer');h.classList.add('walk')});cf.innerHTML=''},4200);
+}
+
+/* ---------- daily cheer ---------- */
+const QUOTES=[
+  '今天多存一點，未來的我們就多自由一點。','山不會自己變矮，但我們每一步都更高。','慢慢來比較快，複利最喜歡有耐心的人。',
+  '不用每天盯盤，只要每個月都記得出發。','兩個人一起走，上坡也像散步。','市場起起落落，我們的腳步不停。',
+  '記帳不是限制，是知道自己往哪裡走。','跌的時候別慌，那是山路的轉彎，不是終點。','小木屋就在山頂，燈已經幫我們開好了。',
+  '今天的紀律，是明天的底氣。','存錢這件事，一個人會累，兩個人會贏。','不跟別人比速度，跟昨天的自己比高度。',
+  '每一張股票都是一塊磚，我們在蓋山頂那間房子。','可以休息，但不要回頭下山。','每個 10 號，都是寫給未來的一封信。',
+  '別人看漲跌，我們看的是山頂。','走得慢沒關係，停下來才可惜。','今天也是往上走一步的好日子。'];
+function setQuote(){
+  const c=cfg(),R=(S.loaded.t&&S.loaded.d)?compute():null,list=[...QUOTES];
+  if(R&&R.prog<1&&R.total>0){const next=(Math.floor(R.prog*4)+1)/4*c.goal;list.push(`離下一個告示牌只差 ${money(next-R.total)}，再撐一下！`)}
+  if(R&&R.prog>=1)list.push('我們到山頂了！要不要一起訂下一座山？');
+  const who=(S.me===0||S.me===1)?1-S.me:(Math.random()<.5?0:1),q=list[Math.floor(Math.random()*list.length)];
+  const h=new Date().getHours(),hi=h<11?'早安':h<18?'午安':'晚安';
+  $('#q-av').textContent=initial(c.names[who]);$('#q-av').className='av a'+(who+1);
+  $('#q-meta').textContent=(S.me===0||S.me===1)?`${hi}，${c.names[S.me]}・${c.names[who]} 想對你說`:`${hi}・${c.names[who]} 想對你說`;$('#q-text').textContent=q;
+}
+$('#quote').onclick=setQuote;
+
+/* ---------- reminders ---------- */
+function reminderInfo(){
+  const t=new Date();t.setHours(0,0,0,0);const out=[];
+  for(const off of [-1,0]){const b=new Date(t.getFullYear(),t.getMonth()+off,1),y=b.getFullYear(),m=b.getMonth(),last=new Date(y,m+1,0).getDate();
+    [[10,true],[20,false],[Math.min(30,last),false]].forEach(([d,dep])=>{const due=new Date(y,m,d),eff=new Date(due);while(eff.getDay()===0||eff.getDay()===6)eff.setDate(eff.getDate()-1);out.push({due,eff,dep})})}
+  const active=out.filter(x=>x.eff<=t&&t<=new Date(x.due.getTime()+2*864e5)).sort((a,b)=>b.due-a.due);
+  return active[0]||null;
+}
+function renderReminder(){
+  const r=reminderInfo(),el=$('#remind');if(!r){el.hidden=true;return}
+  const key='nh-remind-'+isoD(r.due);if(lsGet(key)){el.hidden=true;return}
+  const since=r.eff.getTime(),doneDep=S.deposits.some(d=>(d.type||'in')==='in'&&(d.createdAt||0)>=since),doneTr=S.trades.some(x=>(x.createdAt||0)>=since);
+  if(r.dep?doneDep:doneTr){el.hidden=true;return}
+  const dl=(r.due.getMonth()+1)+'/'+r.due.getDate(),shifted=isoD(r.eff)!==isoD(r.due);
+  $('#remind-t').textContent=r.dep?`${dl} 存錢日：記得一起存錢`:`${dl} 記帳日：有買賣股票記得記下來`;
+  $('#remind-s').textContent=(r.dep?'這期有交易也一起記進來。':'沒有交易的話按「知道了」就好。')+(shifted?`（${dl} 是假日，提前提醒）`:'');
+  el.hidden=false;
+}
+$('#remind-x').onclick=()=>{const r=reminderInfo();if(r)lsSet('nh-remind-'+isoD(r.due),'1');$('#remind').hidden=true};
+
+function renderHoldings(R){
+  const el=$('#holdings');
+  if(!R.holdings.length){
+    const noDep=!S.deposits.length;
+    el.innerHTML=`<div class="empty"><p>${noDep?'還沒有任何紀錄。先記下第一次存錢，兩個小人就會出發。':'目前沒有持股，資金都在現金裡。'}</p><button class="btn primary" type="button" data-go="${noDep?'dep':'trade'}">${noDep?'記第一筆存錢':'記一筆交易'}</button></div>`;
+    el.querySelector('[data-go]').onclick=e=>{setKind(e.currentTarget.dataset.go);go('add')};return;
+  }
+  el.innerHTML=R.holdings.map(h=>`
+    <div class="hrow" data-code="${esc(h.code)}">
+      <div class="nm"><span>${esc(h.code)}</span>${esc(h.name)}</div>
+      <div class="r num">${money(h.mv)}</div>
+      <div class="sub">${fmt(h.shares)} 股 · 均價 ${h.avg.toFixed(2)}</div>
+      <div class="r sub"><span class="num ${cls(h.unreal)}">${smoney(h.unreal)}</span> <span class="num ${cls(h.unreal)}">${pct(h.cost?h.unreal/h.cost:0,1)}</span></div>
+      <div class="sub">現價 <b class="num" style="color:var(--ink)">${(+h.price).toFixed(2)}</b>（${(S.prices[h.code]||{}).src==='close'&&(S.prices[h.code]||{}).date===h.pdate?'收盤價・':'成交價・'}${esc((h.pdate||'').slice(5).replace('-','/'))}）</div>
+      <div class="r"></div>
+    </div>`).join('');
+}
+
+function knownCodes(){const m={};for(const t of [...S.trades].sort((a,b)=>(a.date||'').localeCompare(b.date||''))){if(t.code)m[t.code]={code:t.code,name:t.name||(m[t.code]||{}).name||''}}return m}
+
+function sideLabel(s){return s==='buy'?'買進':s==='sell'?'賣出':'股利'}
+function tradeAmount(t){const g=(+t.shares||0)*(+t.price||0);return t.side==='buy'?-(g+(+t.fee||0)):t.side==='sell'?g-(+t.fee||0)-(+t.tax||0):(+t.amount||0)}
+
+function renderRecords(){
+  const c=cfg();
+  let items=[...S.trades.map(t=>({...t,kind:'trade'})),...S.deposits.map(d=>({...d,kind:'dep'}))];
+  if(S.filter!=='all')items=items.filter(i=>i.kind===S.filter);
+  items.sort((a,b)=>(b.date||'').localeCompare(a.date||'')||(b.createdAt||0)-(a.createdAt||0));
+  const el=$('#records');
+  if(!items.length){el.innerHTML=`<div class="card empty"><p>這裡會列出每一筆存錢和交易，點一下可以修改。</p></div>`;return}
+  let html='',cur='';
+  for(const i of items){
+    const ym=(i.date||'').slice(0,7);if(ym!==cur){cur=ym;html+=`<div class="month">${ym.replace('-',' 年 ')} 月</div>`}
+    const [,mm,dd]=(i.date||'--').split('-');
+    if(i.kind==='dep'){
+      const t=i.type||'in',amt=depAmount(i);
+      const lab=t==='out'?['k-out','領出',`兩人各領 ${money(i.perPerson)}`,'一起領出']:t==='div'?['k-div','股利',`${esc(i.code||'')} ${esc(i.name||'')}`.trim()||'現金股利','股利入帳']:['k-dep','存入',`兩人各存 ${money(i.perPerson)}`,'一起存錢'];
+      html+=`<button type="button" class="ritem" data-kind="dep" data-id="${esc(i.id)}"><span class="d">${+dd||''}<small>${+mm||''}月</small></span><span class="t"><b><span class="kind ${lab[0]}">${lab[1]}</span>${lab[2]}</b><span>${esc(i.note||lab[3])}</span></span><span class="a num ${amt>=0?'':'muted'}">${amt>=0?'+':'−'}${money(Math.abs(amt)).slice(1)}</span></button>`;
+    }else{
+      const amt=tradeAmount(i),who=c.names[i.by]||'';
+      const detail=i.side==='div'?'現金股利':`${fmt(i.shares)} 股 × ${(+i.price).toFixed(2)}`;
+      html+=`<button type="button" class="ritem" data-kind="trade" data-id="${esc(i.id)}"><span class="d">${+dd||''}<small>${+mm||''}月</small></span><span class="t"><b><span class="kind k-${i.side}">${sideLabel(i.side)}</span>${esc(i.code)} ${esc(i.name||'')}</b><span>${detail}${who?' · '+esc(who):''}${i.note?' · '+esc(i.note):''}</span></span><span class="a num ${amt>=0?'':'muted'}">${amt>=0?'+':'−'}${money(Math.abs(amt)).slice(1)}</span></button>`;
+    }
+  }
+  el.innerHTML=html;
+  el.querySelectorAll('.ritem').forEach(b=>b.onclick=()=>{b.dataset.kind==='dep'?editDep(b.dataset.id):editTrade(b.dataset.id)});
+}
+
+function renderByChips(){
+  const c=cfg();const el=$('#f-by');
+  el.innerHTML=c.names.map((n,i)=>`<button type="button" class="chip" data-i="${i}" aria-pressed="${S.by===i}"><span class="av a${i+1}">${esc(initial(n))}</span>${esc(n)}</button>`).join('');
+  el.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{S.by=+b.dataset.i;lsSet('nh-by',String(S.by));renderByChips()});
+}
+
+/* ---------- navigation ---------- */
+function go(tab){
+  S.tab=tab;
+  $$('.view').forEach(v=>{const on=v.id==='v-'+tab;v.hidden=!on;if(on)v.style.display='flex'});
+  $$('nav.tabs button').forEach(b=>b.toggleAttribute('aria-current',b.dataset.tab===tab));
+  $$('nav.tabs button').forEach(b=>{if(b.dataset.tab===tab)b.setAttribute('aria-current','page')});
+  if(tab==='home'){requestAnimationFrame(()=>{if(S.loaded.t&&S.loaded.d)drawHill(compute())})}
+  if(tab==='set')fillSettings();
+  window.scrollTo(0,0);
+}
+$$('nav.tabs button').forEach(b=>b.onclick=()=>go(b.dataset.tab));
+
+function setSeg(group,v){$$(group+' button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.v===v)))}
+function setKind(k){S.kind=k;setSeg('#add-kind',k);$('#f-trade').hidden=k!=='trade';$('#f-dep').hidden=k!=='dep'}
+$$('#add-kind button').forEach(b=>b.onclick=()=>setKind(b.dataset.v));
+$$('#filters button').forEach(b=>b.onclick=()=>{S.filter=b.dataset.v;setSeg('#filters',S.filter);renderRecords()});
+
+/* ---------- trade form ---------- */
+function availHint(tot){
+  const el=$('#f-avail');if(!S.loaded.t||!S.loaded.d){el.textContent='';return}
+  let cash=compute().cash;if(S.editT){const old=S.trades.find(x=>x.id===S.editT);if(old)cash-=tradeAmount(old)}
+  const delta=S.side==='buy'?-tot:tot,after=cash+delta;
+  el.innerHTML=`可用餘額 <b class="num">${money(cash)}</b> → 這筆之後 <b class="num ${after<0?'warn':''}">${money(after)}</b>`+(after<0?'<br><span class="warn">餘額不夠，確認一下是不是還沒記這期的存錢</span>':'');
+}
+function setSide(s){S.side=s;setSeg('#f-side',s);$('#f-side').classList.toggle('off',s==='div');
+  $('#f-trade-only').hidden=s==='div';$('#f-div-only').hidden=s!=='div';$('#f-feehint').hidden=s==='div';
+  $('#f-tax-wrap').style.visibility=s==='sell'?'visible':'hidden';
+  $('#f-total-l').textContent=s==='buy'?'應付金額（含手續費）':s==='sell'?'實收金額（扣費、稅）':'實收股利';
+  autoFees();}
+$$('#f-side button').forEach(b=>b.onclick=()=>setSide(b.dataset.v));
+
+function autoFees(){
+  const c=cfg();const sh=+$('#f-shares').value||0,pr=+$('#f-price').value||0,g=sh*pr;
+  if(S.side!=='div'){
+    if(!S.feeTouched)$('#f-fee').value=g>0?Math.max(+c.minFee||0,Math.floor(g*0.001425*(+c.discount||1))):'';
+    if(!S.taxTouched){const rate=cleanCode($('#f-code').value).startsWith('00')?0.001:0.003;$('#f-tax').value=S.side==='sell'&&g>0?Math.floor(g*rate):''}
+  }
+  const fee=+$('#f-fee').value||0,tax=S.side==='sell'?(+$('#f-tax').value||0):0;
+  const tot=S.side==='buy'?g+fee:S.side==='sell'?g-fee-tax:(+$('#f-amount').value||0);
+  $('#f-total').textContent=money(tot);
+  availHint(tot);
+}
+['#f-shares','#f-price','#f-amount'].forEach(s=>$(s).addEventListener('input',autoFees));
+$('#f-fee').addEventListener('input',()=>{S.feeTouched=true;autoFees()});
+$('#f-tax').addEventListener('input',()=>{S.taxTouched=true;autoFees()});
+const TW=(()=>{try{return JSON.parse(document.getElementById('twcodes').textContent)}catch(e){return{}}})();
+function lookupName(code){const k=knownCodes()[code];return(k&&k.name)||TW[code]||''}
+$('#f-code').addEventListener('input',()=>{
+  const code=cleanCode($('#f-code').value),n=lookupName(code),nm=$('#f-name');
+  if(n){if(!nm.value||S.nameAuto){nm.value=n;S.nameAuto=true}}else if(S.nameAuto){nm.value='';S.nameAuto=false}
+  $('#f-codehint').hidden=!(code.length>=4&&!n);autoFees();
+});
+$('#f-name').addEventListener('input',()=>{S.nameAuto=false});
+
+function resetTrade(){
+  S.editT=null;S.feeTouched=false;S.taxTouched=false;S.nameAuto=false;$('#f-codehint').hidden=true;
+  ['#f-code','#f-name','#f-shares','#f-price','#f-fee','#f-tax','#f-amount','#f-note'].forEach(s=>$(s).value='');
+  $('#f-date').value=today();$('#f-save').textContent='記下這筆';$('#f-cancel').hidden=true;$('#f-del').hidden=true;delArm($('#f-del'),false);
+  setSide('buy');
+}
+function editTrade(id){
+  const t=S.trades.find(x=>x.id===id);if(!t)return;
+  resetTrade();S.editT=id;S.feeTouched=true;S.taxTouched=true;
+  $('#f-date').value=t.date||today();$('#f-code').value=t.code||'';$('#f-name').value=t.name||'';
+  $('#f-shares').value=t.shares||'';$('#f-price').value=t.price||'';$('#f-fee').value=t.fee??'';$('#f-tax').value=t.tax??'';$('#f-amount').value=t.amount||'';$('#f-note').value=t.note||'';
+  S.by=+t.by||0;renderByChips();setSide(t.side||'buy');
+  $('#f-save').textContent='儲存修改';$('#f-cancel').hidden=false;$('#f-del').hidden=false;
+  setKind('trade');go('add');
+}
+$('#f-cancel').onclick=()=>{resetTrade();go('rec')};
+
+$('#f-trade').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const code=cleanCode($('#f-code').value);if(!code){toast('請填股票代號');$('#f-code').focus();return}
+  const date=$('#f-date').value||today();
+  const doc={date,by:S.by,side:S.side,code,name:$('#f-name').value.trim(),note:$('#f-note').value.trim(),updatedAt:Date.now()};
+  if(S.side==='div'){const a=+$('#f-amount').value;if(!(a>0)){toast('請填實收股利金額');return}Object.assign(doc,{amount:a,shares:0,price:0,fee:0,tax:0})}
+  else{const sh=+$('#f-shares').value,pr=+$('#f-price').value;
+    if(!(sh>0)){toast('請填股數');$('#f-shares').focus();return}
+    if(!(pr>0)){toast('請填成交價');$('#f-price').focus();return}
+    Object.assign(doc,{shares:sh,price:pr,fee:+$('#f-fee').value||0,tax:S.side==='sell'?(+$('#f-tax').value||0):0,amount:0})}
+  const btn=$('#f-save');btn.disabled=true;
+  try{
+    await write('trade','/api/trades/save',{id:S.editT||undefined,trade:{date:doc.date,side:doc.side,code:doc.code,name:doc.name,shares:doc.shares,price:doc.price,fee:doc.fee,tax:doc.tax,by:cfg().names[doc.by],note:doc.note}});
+    const wasEdit=!!S.editT;
+    resetTrade();toast(wasEdit?'已更新':'已記下');go('home');
+  }catch(err){toast(errMsg(err))}finally{btn.disabled=false}
+});
+
+
+/* ---------- money in/out form ---------- */
+function depAmount(d){const t=d.type||'in';return t==='div'?(+d.amount||0):t==='out'?-(+d.perPerson||0)*2:(+d.perPerson||0)*2}
+S.dtype='in';
+const DT={in:{help:'兩個人一起存一樣的金額，這裡填<b>每人</b>存多少，合計會自動乘以 2。',per:'每人存多少',total:'兩人合計存入',save:'記下這次存錢'},
+  out:{help:'兩個人一起領一樣的金額，這裡填<b>每人</b>領多少。領出後總資產變少，爬山進度也會往回一點。',per:'每人領多少',total:'兩人合計領出',save:'記下這次領出'},
+  div:{help:'填證券戶實際入帳的現金股利（已扣掉匯費、二代健保等）。',per:'',total:'股利入帳',save:'記下股利'}};
+function setDType(t){S.dtype=t;setSeg('#d-type',t);const d=DT[t];
+  $('#d-per-w').hidden=t==='div';$('#d-amt-w').hidden=t!=='div';$('#d-stock').hidden=t!=='div';
+  if(d.per)$('#d-per-l').textContent=d.per;$('#d-help').innerHTML=d.help;$('#d-total-l').textContent=d.total;
+  $('#d-save').textContent=S.editD?'儲存修改':d.save;depCalc()}
+function depValue(){return S.dtype==='div'?(+$('#d-amt').value||0):(+$('#d-per').value||0)*2}
+function depCalc(){
+  const v=depValue();$('#d-total').textContent=money(v);const el=$('#d-avail');
+  if(!S.loaded.t||!S.loaded.d){el.textContent='';return}
+  let cash=compute().cash;if(S.editD){const old=S.deposits.find(x=>x.id===S.editD);if(old)cash-=depAmount(old)}
+  const after=cash+(S.dtype==='out'?-v:v);
+  el.innerHTML=`可用餘額 <b class="num">${money(cash)}</b> → 這筆之後 <b class="num ${after<0?'warn':''}">${money(after)}</b>`+(after<0?'<br><span class="warn">可用餘額不夠領，可能要先賣出部分股票</span>':'');
+}
+$$('#d-type button').forEach(b=>b.onclick=()=>setDType(b.dataset.v));
+['#d-per','#d-amt'].forEach(x=>$(x).addEventListener('input',depCalc));
+$('#d-code').addEventListener('input',()=>{const n=lookupName(cleanCode($('#d-code').value)),nm=$('#d-name');if(n&&(!nm.value||S.dNameAuto)){nm.value=n;S.dNameAuto=true}else if(!n&&S.dNameAuto){nm.value='';S.dNameAuto=false}});
+$('#d-name').addEventListener('input',()=>{S.dNameAuto=false});
+function resetDep(){S.editD=null;S.dNameAuto=false;$('#d-date').value=today();['#d-note','#d-amt','#d-code','#d-name'].forEach(x=>$(x).value='');$('#d-per').value=lsGet('nh-lastper')||'';$('#d-cancel').hidden=true;$('#d-del').hidden=true;delArm($('#d-del'),false);setDType('in')}
+function editDep(id){const d=S.deposits.find(x=>x.id===id);if(!d)return;resetDep();S.editD=id;
+  $('#d-date').value=d.date||today();$('#d-per').value=d.perPerson||'';$('#d-amt').value=d.amount||'';$('#d-code').value=d.code||'';$('#d-name').value=d.name||'';$('#d-note').value=d.note||'';
+  $('#d-cancel').hidden=false;$('#d-del').hidden=false;setDType(d.type||'in');setKind('dep');go('add')}
+$('#d-cancel').onclick=()=>{resetDep();go('rec')};
+$('#f-dep').addEventListener('submit',async e=>{
+  e.preventDefault();const t=S.dtype;
+  const doc={date:$('#d-date').value||today(),type:t,note:$('#d-note').value.trim(),updatedAt:Date.now()};
+  if(t==='div'){const a=+$('#d-amt').value;if(!(a>0)){toast('請填實收股利金額');$('#d-amt').focus();return}Object.assign(doc,{amount:a,perPerson:0,code:cleanCode($('#d-code').value),name:$('#d-name').value.trim()})}
+  else{const per=+$('#d-per').value;if(!(per>0)){toast(t==='out'?'請填每人領多少':'請填每人存多少');$('#d-per').focus();return}Object.assign(doc,{perPerson:per,amount:0})}
+  const btn=$('#d-save');btn.disabled=true;
+  try{
+    await saveCash({date:doc.date,type:doc.type,perPerson:doc.perPerson,amount:doc.amount,code:doc.code,name:doc.name,note:doc.note});
+    if(t==='in')lsSet('nh-lastper',String(doc.perPerson));
+    const wasEdit=!!S.editD,goal=cfg().goal;
+    resetDep();go('home');
+    toast(wasEdit?'已更新':t==='out'?`已記下領出 ${money(doc.perPerson*2)}，爬山進度往回 ${(doc.perPerson*2/goal*100).toFixed(1)}%`:t==='div'?'已記下股利':'已記下這次存錢');
+  }catch(err){toast(errMsg(err))}finally{btn.disabled=false}
+});
+
+/* ---------- delete with in-page confirm ---------- */
+function delArm(b,on){b.dataset.armed=on?'1':'';b.textContent=on?'再按一次確定刪除':'刪除這筆'}
+async function doDelete(b,coll,getId,reset){
+  if(!b.dataset.armed){delArm(b,true);setTimeout(()=>delArm(b,false),3500);return}
+  const id=getId();if(!id)return;b.disabled=true;
+  try{await write('del-'+id,coll==='trades'?'/api/trades/delete':'/api/cash/delete',{id});reset();toast('已刪除');go('rec')}catch(e){toast(errMsg(e))}finally{b.disabled=false}
+}
+$('#f-del').onclick=e=>doDelete(e.currentTarget,'trades',()=>S.editT,resetTrade);
+$('#d-del').onclick=e=>doDelete(e.currentTarget,'deposits',()=>S.editD,resetDep);
+
+/* ---------- LINE sheet ---------- */
+const SH={range:'week'};
+const isoD=d=>d.toLocaleDateString('sv-SE');
+const md=s=>{const p=String(s||'').split('-');return(+p[1])+'/'+(+p[2])};
+function rangeDates(){
+  const t=new Date();
+  if(SH.range==='today')return[isoD(t),isoD(t)];
+  if(SH.range==='week'){const d=new Date(t);d.setDate(d.getDate()-((d.getDay()+6)%7));return[isoD(d),isoD(t)]}
+  if(SH.range==='month')return[isoD(new Date(t.getFullYear(),t.getMonth(),1)),isoD(t)];
+  let f=$('#sh-from').value||isoD(t),to=$('#sh-to').value||isoD(t);if(f>to)[f,to]=[to,f];return[f,to];
+}
+function summaryText(){
+  const R=compute(),c=R.c,[f,to]=rangeDates();
+  const ahead=R.prog-R.timeProg;
+  const byDate=(a,b)=>(a.date||'').localeCompare(b.date||'')||(a.createdAt||0)-(b.createdAt||0);
+  const inR=x=>(x.date||'')>=f&&(x.date||'')<=to;
+  const items=[...S.deposits.filter(inR).map(d=>({...d,kind:'dep'})),...S.trades.filter(inR).map(t=>({...t,kind:'trade'}))].sort(byDate);
+  let s=`【財富自由的路上NH】${f===to?md(f):md(f)+'–'+md(to)} 帳本整理\n`;
+  if(!items.length)s+=`\n這段時間沒有新紀錄\n`;
+  else{
+    let dep=0,out=0,buy=0,sell=0,div=0;
+    const lines=items.map(i=>{
+      if(i.kind==='dep'){const t=i.type||'in';if(t==='div'){div+=+i.amount||0;return`・${md(i.date)} 股利入帳 ${[i.code,i.name].filter(Boolean).join(' ')} +${money(i.amount).slice(1)}`}if(t==='out'){out+=(+i.perPerson||0)*2;return`・${md(i.date)} 一起領出，各 ${money(i.perPerson)}`}dep+=(+i.perPerson||0)*2;return`・${md(i.date)} 一起存錢，各 ${money(i.perPerson)}`}
+      const who=c.names[i.by]||'';
+      if(i.side==='div'){div+=+i.amount||0;return`・${md(i.date)} ${i.code} ${i.name||''} 股利 +${money(i.amount).slice(1)}`}
+      const amt=Math.abs(tradeAmount(i));if(i.side==='buy')buy+=amt;else sell+=amt;
+      return`・${md(i.date)} ${who} ${sideLabel(i.side)} ${i.code} ${i.name||''} ${fmt(i.shares)}股 @${(+i.price).toFixed(2)}`;
+    });
+    const shown=lines.slice(0,15);if(lines.length>15)shown.push(`…還有 ${lines.length-15} 筆`);
+    s+=`\n📝 這段時間的紀錄\n${shown.join('\n')}\n`;
+    const sub=[dep&&`存入 ${money(dep)}`,out&&`領出 ${money(out)}`,buy&&`買進 ${money(buy)}`,sell&&`賣出 ${money(sell)}`,div&&`股利 ${money(div)}`].filter(Boolean);
+    if(sub.length)s+=`小計：${sub.join('｜')}\n`;
+  }
+  s+=`\n📊 目前整體（${md(today())}）\n💰 總資產　${money(R.total)}\n📥 淨投入　 ${money(R.netIn)}\n📊 損益　　${smoney(R.pnl)}（${pct(R.ret)}）\n👫 每人　　${money(R.total/2)}\n`;
+  if(R.holdings.length){s+=`\n持股：\n`+R.holdings.map(h=>`・${h.code} ${h.name} ${fmt(h.shares)}股 ${smoney(h.unreal)}`).join('\n')+'\n'}
+  s+=`💵 可用餘額 ${money(R.cash)}\n`;
+  s+=R.prog>=1?`\n⛰ 我們爬到山頂了！🏠 100 萬達成 🎉`:`\n⛰ 已爬 ${(R.prog*100).toFixed(1)}%，離 ${c.goal%10000===0?(c.goal/10000)+' 萬':money(c.goal)} 還差 ${money(R.left)}\n⏱ 時間過了 ${(R.timeProg*100).toFixed(0)}%，${ahead>=0?'進度領先 👍':'進度落後，加油 💪'}`;
+  return s;
+}
+function refreshSheet(){
+  const t=summaryText();$('#sheet-text').value=t;
+}
+function openSheet(){
+  setSeg('#sh-range',SH.range);$('#sh-custom').hidden=SH.range!=='custom';
+  refreshSheet();
+  let chat=false;try{const c=LIFF_OK&&liff.getContext();chat=!!c&&['group','room','utou'].includes(c.type)}catch(e){}
+  $('#sheet-send').hidden=!chat;$('#sheet-pick').hidden=!LIFF_OK;
+  $('#sheet').hidden=false;
+}
+$$('#sh-range button').forEach(b=>b.onclick=()=>{
+  SH.range=b.dataset.v;setSeg('#sh-range',SH.range);
+  const custom=SH.range==='custom';$('#sh-custom').hidden=!custom;
+  if(custom&&!$('#sh-from').value){const t=new Date();$('#sh-from').value=isoD(new Date(t.getFullYear(),t.getMonth(),1));$('#sh-to').value=isoD(t)}
+  refreshSheet();
+});
+['#sh-from','#sh-to'].forEach(s=>$(s).addEventListener('change',refreshSheet));
+$('#btn-line').onclick=openSheet;
+$('#sheet-close').onclick=()=>$('#sheet').hidden=true;
+const lineMsg=()=>[{type:'text',text:$('#sheet-text').value.slice(0,4900)}];
+$('#sheet-send').onclick=async()=>{try{await liff.sendMessages(lineMsg());toast('已送到聊天室');$('#sheet').hidden=true}catch(e){toast('送出失敗，請從 LINE 群組打開帳本後再試')}};
+$('#sheet-pick').onclick=async()=>{try{if(!liff.isApiAvailable('shareTargetPicker')){toast('這裡不能選擇聊天室，請改用複製文字');return}const r=await liff.shareTargetPicker(lineMsg());if(r){toast('已分享');$('#sheet').hidden=true}}catch(e){toast('分享沒有完成')}};
+$('#sheet').addEventListener('click',e=>{if(e.target.id==='sheet')$('#sheet').hidden=true});
+$('#sheet-copy').onclick=async()=>{
+  const ta=$('#sheet-text');
+  try{await navigator.clipboard.writeText(ta.value);toast('已複製，到 LINE 群組貼上')}
+  catch(e){ta.removeAttribute('readonly');ta.focus();ta.select();try{document.execCommand('copy');toast('已複製，到 LINE 群組貼上')}catch(_){toast('已選取文字，請長按複製')}ta.setAttribute('readonly','')}
+};
+
+/* ---------- Excel ---------- */
+$('#btn-xlsx').onclick=async()=>{
+  if(!window.XLSX){toast('Excel 元件沒載入成功，請重新整理頁面');return}
+  const c=cfg(),R=compute();
+  const trades=[...S.trades].sort((a,b)=>(a.date||'').localeCompare(b.date||'')||(a.createdAt||0)-(b.createdAt||0)).map(t=>({
+    '日期':t.date,'下單人':c.names[t.by]||'','類別':sideLabel(t.side),'代號':t.code,'名稱':t.name||'',
+    '股數':t.side==='div'?'':t.shares,'成交價':t.side==='div'?'':t.price,'成交金額':t.side==='div'?'':Math.round(t.shares*t.price),
+    '手續費':t.side==='div'?'':(t.fee||0),'證交稅':t.side==='sell'?(t.tax||0):'','股利':t.side==='div'?t.amount:'',
+    '現金流':Math.round(tradeAmount(t)),'備註':t.note||''}));
+  const deps=[...S.deposits].sort((a,b)=>(a.date||'').localeCompare(b.date||'')).map(d=>{const t=d.type||'in',sg=t==='out'?-1:1;return{
+    '日期':d.date,'類型':t==='out'?'領出':t==='div'?'股利入帳':'存入',[c.names[0]]:t==='div'?'':sg*(+d.perPerson||0),[c.names[1]]:t==='div'?'':sg*(+d.perPerson||0),'合計':depAmount(d),'股票':[d.code,d.name].filter(Boolean).join(' '),'備註':d.note||''}});
+  const hold=R.holdings.map(h=>({'代號':h.code,'名稱':h.name,'股數':h.shares,'平均成本':+h.avg.toFixed(2),'成本':Math.round(h.cost),'現價':h.price,'現價日期':h.pdate,'市值':Math.round(h.mv),'未實現損益':Math.round(h.unreal)}));
+  const sum=[['項目','金額'],['匯出日期',today()],['累計存入',Math.round(R.totalIn)],['累計領出',Math.round(R.totalOut)],['淨投入',Math.round(R.netIn)],['可用餘額',Math.round(R.cash)],['持股市值',Math.round(R.mv)],['總資產',Math.round(R.total)],['總損益',Math.round(R.pnl)],['報酬率',+(R.ret*100).toFixed(2)+'%'],['已實現損益',Math.round(R.realized)],['每人資產',Math.round(R.total/2)],['目標',c.goal],['目標進度',+(R.prog*100).toFixed(1)+'%']];
+  const wb=XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet(sum),'總覽');
+  XLSX.utils.book_append_sheet(wb,XLSX.utils.json_to_sheet(trades.length?trades:[{'日期':''}]),'交易紀錄');
+  XLSX.utils.book_append_sheet(wb,XLSX.utils.json_to_sheet(deps.length?deps:[{'日期':''}]),'資金進出');
+  XLSX.utils.book_append_sheet(wb,XLSX.utils.json_to_sheet(hold.length?hold:[{'代號':''}]),'持股明細');
+  try{XLSX.writeFile(wb,`財富自由的路上NH_${today()}.xlsx`);toast(LIFF_OK&&liff.isInClient()?'如果沒有開始下載，請到「設定」用外部瀏覽器開啟':'已匯出')}
+  catch(e){toast('這個畫面不能下載檔案，請到「設定」用外部瀏覽器開啟')}
+};
+
+/* ---------- API (Cloudflare Worker) ---------- */
+const CONF=window.NH_CONFIG||{};
+let LIFF_OK=false;
+const uuid=()=>(window.crypto&&crypto.randomUUID?crypto.randomUUID():'r-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,10));
+class ApiErr extends Error{constructor(status,body){super((body&&body.message)||'連線失敗');this.status=status;this.code=body&&body.error;this.body=body||{}}}
+async function api(method,path,body){
+  const headers={'content-type':'application/json'};
+  if(CONF.devUser)headers['x-dev-user']=CONF.devUser;
+  else{const t=window.liff&&LIFF_OK?liff.getIDToken():null;if(!t)throw new ApiErr(401,{error:'unauthenticated',message:'LINE 登入已過期，請重新打開帳本'});headers.authorization='Bearer '+t}
+  let res;
+  try{res=await fetch(CONF.api+path,{method,headers,body:body?JSON.stringify(body):undefined})}
+  catch(e){throw new ApiErr(0,{error:'network',message:'網路連線失敗，資料沒有送出，請再試一次'})}
+  const j=await res.json().catch(()=>({}));
+  if(!res.ok)throw new ApiErr(res.status,j);
+  return j;
+}
+function errMsg(e){if(e&&e.status===401)return'LINE 登入已過期，請重新打開帳本';return(e&&e.message)||'發生錯誤，請稍後再試'}
+// One request id per form until it succeeds or is refused, so a network retry never records twice.
+function reqFor(key){S.req=S.req||{};return S.req[key]||(S.req[key]=uuid())}
+function doneReq(key){if(S.req)delete S.req[key]}
+async function write(key,path,body){
+  try{const r=await api('POST',path,{...body,requestId:reqFor(key)});doneReq(key);if(r.ledger)applyLedger(r.ledger);return r}
+  catch(e){if(e.status>=400&&e.status<500)doneReq(key);throw e}
+}
+function applyLedger(L){
+  S.names=(L.names&&L.names.length?L.names.slice():['成員']);
+  if(S.names.length<2)S.names.push('（第二位成員）');
+  S.meName=L.me.name;S.role=L.me.role;
+  const mi=S.names.indexOf(L.me.name);S.me=mi>=0?mi:null;
+  if(S.me!==null&&!S.byInit){S.by=S.me;S.byInit=true;renderByChips()}
+  S.pinSet=!!L.pinSet;
+  S.config={goal:L.settings.goal,start:L.settings.start,end:L.settings.end,discount:L.settings.discount,minFee:L.settings.minFee,names:S.names};
+  const idx=n=>Math.max(0,S.names.indexOf(n));
+  const ms=v=>{const n=Date.parse(String(v||'').replace(' ','T')+'+08:00');return Number.isFinite(n)?n:0};
+  S.trades=(L.trades||[]).map(t=>({...t,by:idx(t.by),createdAt:ms(t.createdAt)}));
+  S.deposits=(L.cash||[]).map(c=>({...c,createdAt:ms(c.createdAt)}));
+  const pm={};for(const k in (L.prices||{})){const p=L.prices[k];pm[k]={price:p.close,date:p.date,time:p.date,src:'close',market:p.market}}
+  S.prices=pm;
+  S.loaded.t=1;S.loaded.d=1;S.loaded.p=1;S.loaded.c=1;
+  if(S.unlocked){render();if(S.tab==='set')fillSettings()}
+}
+async function reload(){try{applyLedger(await api('GET','/api/ledger'))}catch(e){if(e.status===403||e.status===401){lockNow();bootstrap()}}}
+
+/* ---------- in-page confirm ---------- */
+function askConfirm(msg,yes){return new Promise(res=>{$('#cf-msg').textContent=msg;$('#cf-yes').textContent=yes||'確定';$('#confirm').hidden=false;
+  const done=v=>{$('#confirm').hidden=true;$('#cf-yes').onclick=null;$('#cf-no').onclick=null;res(v)};$('#cf-yes').onclick=()=>done(true);$('#cf-no').onclick=()=>done(false)})}
+async function saveCash(entry,confirmOverdraw){
+  try{return await write('cash','/api/cash/save',{id:S.editD||undefined,entry,confirmOverdraw:!!confirmOverdraw})}
+  catch(e){if(e.code==='overdraw'&&!confirmOverdraw){if(await askConfirm(e.message,'仍要記錄'))return saveCash(entry,true);throw new Error('已取消，沒有記錄')}throw e}
+}
+
+/* ---------- settings ---------- */
+function fillSettings(){const c=cfg();$('#s-goal').value=c.goal;$('#s-start').value=c.start;$('#s-end').value=c.end;$('#s-disc').value=c.discount;$('#s-min').value=c.minFee;renderMe();if(S.role==='admin')loadMembers()}
+$('#f-set').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const goal=+$('#s-goal').value,start=$('#s-start').value,end=$('#s-end').value,disc=+$('#s-disc').value,minFee=+$('#s-min').value;
+  if(!(goal>0)){toast('目標金額要大於 0');return}if(!start||!end||end<=start){toast('目標日要晚於起始日');return}
+  if(!(disc>0&&disc<=1)){toast('折扣請填 0 到 1 之間，例如 0.6');return}
+  try{await write('settings','/api/settings',{settings:{goal:Math.round(goal),start,end,discount:disc,minFee:Math.round(minFee||0)}});toast('設定已儲存')}catch(err){toast(errMsg(err))}
+});
+$('#f-pin').addEventListener('submit',async e=>{
+  e.preventDefault();const cur=$('#p-cur').value,p=$('#p-new').value;
+  if(!/^\d{4}$/.test(cur)){toast('請輸入目前的 4 位數密碼');return}
+  if(!/^\d{4}$/.test(p)){toast('新密碼請輸入 4 位數字');return}
+  try{await write('pin','/api/pin/set',{pin:p,current:cur});$('#p-new').value='';$('#p-cur').value='';toast('密碼已更換')}catch(err){toast(errMsg(err))}
+});
+function renderMe(){
+  const el=$('#me-line');if(!el)return;
+  el.textContent=S.meName?`目前登入：${S.meName}（${S.role==='admin'?'管理者':'成員'}）`:'';
+  $('#members-card').hidden=S.role!=='admin';
+  $('#ext-btn').hidden=!(LIFF_OK&&window.liff&&liff.isInClient());
+}
+$('#ext-btn').onclick=()=>{try{liff.openWindow({url:location.href,external:true})}catch(e){toast('無法開啟外部瀏覽器')}};
+async function loadMembers(){
+  const box=$('#members-list');box.textContent='讀取中…';
+  try{
+    const {members}=await api('GET','/api/members'),st={approved:'已核准',pending:'待核准',disabled:'停用'};
+    box.innerHTML=members.map(m=>`<div class="mrow" data-u="${esc(m.userId)}"><div class="mi"><b>${esc(m.name||m.lineName)}</b><span>${m.role==='admin'?'管理者':'成員'}・${st[m.status]||''}・LINE 名稱：${esc(m.lineName)}</span></div>${m.self?'<span class="muted" style="font-size:12.5px">你自己</span>':m.status==='approved'?'<button class="btn ghost" type="button" data-act="disable">停用</button>':`<div class="ma"><input type="text" maxlength="12" value="${esc(m.name||m.lineName)}" aria-label="帳本名稱" id="mn-${esc(m.userId)}"><button class="btn primary" type="button" data-act="approve">核准</button></div>`}</div>`).join('')||'<p class="note">目前沒有其他成員</p>';
+    box.querySelectorAll('[data-act]').forEach(b=>b.onclick=async()=>{
+      const row=b.closest('.mrow'),act=b.dataset.act,inp=row.querySelector('input');
+      b.disabled=true;
+      try{await write('member-'+row.dataset.u,'/api/members/update',{userId:row.dataset.u,status:act==='approve'?'approved':'disabled',name:inp?inp.value.trim():undefined});toast(act==='approve'?'已核准':'已停用');await reload();loadMembers()}
+      catch(e){toast(errMsg(e));b.disabled=false}
+    });
+  }catch(e){box.textContent=errMsg(e)}
+}
+
+/* ---------- PIN gate (checked by the Worker) ---------- */
+const G={mode:'loading',buf:'',first:''};
+function gate(mode,title,sub,btn){
+  G.mode=mode;G.buf='';$('#gate').hidden=false;$('#g-title').textContent=title;$('#g-sub').textContent=sub||'';
+  const pin=mode==='enter'||mode==='set1'||mode==='set2';$('#g-dots').hidden=!pin;$('#g-pad').hidden=!pin;
+  const b=$('#g-btn');b.hidden=!btn;if(btn){b.textContent=btn.label;b.onclick=btn.onClick}
+  dots();
+}
+function dots(){$$('#g-dots i').forEach((d,i)=>d.classList.toggle('on',i<G.buf.length))}
+function shake(){const d=$('#g-dots');d.classList.remove('shake');void d.offsetWidth;d.classList.add('shake')}
+$('#g-pad').innerHTML=[1,2,3,4,5,6,7,8,9,'',0,'⌫'].map(k=>k===''?'<button class="blank" type="button" tabindex="-1" aria-hidden="true"></button>':`<button type="button" data-k="${k}" ${k==='⌫'?'class="sm" aria-label="刪除"':''}>${k}</button>`).join('');
+$('#g-pad').addEventListener('click',e=>{const b=e.target.closest('[data-k]');if(b)press(b.dataset.k)});
+document.addEventListener('keydown',e=>{if($('#gate').hidden||$('#g-pad').hidden)return;if(/^\d$/.test(e.key))press(e.key);else if(e.key==='Backspace')press('⌫')});
+async function press(k){
+  if(!['enter','set1','set2'].includes(G.mode))return;
+  if(k==='⌫'){G.buf=G.buf.slice(0,-1);dots();return}
+  if(G.buf.length>=4)return;G.buf+=k;dots();if(G.buf.length<4)return;
+  const pin=G.buf,mode=G.mode;G.mode='busy';
+  await new Promise(r=>setTimeout(r,120));
+  if(mode==='set1'){G.first=pin;gate('set2','再輸入一次','確認你們的 4 位數密碼');return}
+  if(mode==='set2'){
+    if(pin!==G.first){shake();gate('set1','兩次不一樣','請重新設定 4 位數密碼');return}
+    $('#g-sub').textContent='設定中…';
+    try{await write('pinset','/api/pin/set',{pin});unlock()}catch(e){gate('set1','設定沒有成功',errMsg(e))}
+    return;
+  }
+  $('#g-sub').textContent='確認中…';
+  try{
+    const r=await api('POST','/api/pin/verify',{pin});
+    if(r.ok){unlock();return}
+    G.mode='enter';shake();G.buf='';dots();$('#g-sub').textContent=r.remaining?`密碼不對，還可以再試 ${r.remaining} 次`:'密碼不對';
+  }catch(e){G.mode='enter';G.buf='';dots();$('#g-sub').textContent=errMsg(e)}
+}
+function unlock(){S.unlocked=true;actT=0;touch();$('#gate').hidden=true;render();go(S.tab);setQuote();renderMe()}
+function checkGate(){
+  if(!S.loaded.c)return;
+  if(!S.pinSet){gate('set1','設定共用密碼','第一次使用，請設定你們兩個人共用的 4 位數密碼');return}
+  if(!S.unlocked)gate('enter','輸入密碼','財富自由的路上NH');
+}
+
+/* ---------- auto lock: leaving the page, or 5 minutes idle ---------- */
+const LOCK_MS=5*60*1000;let actT=0;
+function touch(){S.lastAct=Date.now();actT=S.lastAct}
+['pointerdown','keydown','touchstart','wheel'].forEach(ev=>document.addEventListener(ev,touch,{passive:true}));
+document.addEventListener('scroll',touch,{passive:true});
+function lockNow(msg){const was=S.unlocked;S.unlocked=false;$('#sheet').hidden=true;$('#confirm').hidden=true;if(was||G.mode==='enter')gate('enter','已鎖定',msg||'輸入 4 位數密碼解鎖')}
+function idleCheck(){if(S.unlocked&&Date.now()-(S.lastAct||0)>LOCK_MS)lockNow('超過 5 分鐘沒有使用，已自動鎖定')}
+setInterval(idleCheck,15000);
+document.addEventListener('visibilitychange',()=>{if(document.hidden){if(S.unlocked)lockNow('離開頁面後已自動鎖定，請重新輸入密碼')}else idleCheck()});
+window.addEventListener('pagehide',()=>{if(S.unlocked)lockNow('離開頁面後已自動鎖定，請重新輸入密碼')});
+$('#btn-lock').onclick=()=>lockNow('輸入 4 位數密碼解鎖');
+
+/* ---------- boot: LINE login → member check → PIN ---------- */
+async function bootstrap(){
+  gate('loading','讀取中…','正在連線到你們的帳本');
+  if(!CONF.api){gate('err','設定還沒完成','缺少後端網址');return}
+  if(!CONF.devUser){
+    if(!window.liff){gate('err','無法載入 LINE','請確認網路連線後重新整理',{label:'重新整理',onClick:()=>location.reload()});return}
+    if(!LIFF_OK){try{await liff.init({liffId:CONF.liffId});LIFF_OK=true}catch(e){gate('err','LINE 登入初始化失敗',String((e&&e.message)||e),{label:'重新整理',onClick:()=>location.reload()});return}}
+    if(!liff.isLoggedIn()){liff.login({redirectUri:location.href});return}
+  }
+  let me;
+  try{me=await api('GET','/api/me')}catch(e){gate('err','連不上帳本',errMsg(e),{label:'重新整理',onClick:()=>location.reload()});return}
+  const waiting=()=>gate('pending','等待核准','已送出申請，管理者核准後就能看到帳本。',{label:'重新檢查',onClick:()=>bootstrap()});
+  if(me.status==='member'){
+    try{applyLedger(await api('GET','/api/ledger'))}catch(e){gate('err','讀取帳本失敗',errMsg(e),{label:'重新整理',onClick:()=>location.reload()});return}
+    checkGate();return;
+  }
+  if(me.status==='pending'){waiting();return}
+  if(me.status==='disabled'){gate('pending','這個帳號已停用','如果有問題，請聯絡管理者。');return}
+  gate('join','申請使用帳本','這個帳本只開放給成員。送出申請後，等管理者核准。',{label:'送出申請',onClick:async()=>{
+    try{const r=await api('POST','/api/join',{});if(r.status==='member')bootstrap();else waiting()}catch(e){toast(errMsg(e))}
+  }});
+}
+S.by=+(lsGet('nh-by')||0)||0;
+resetTrade();resetDep();
+bootstrap();
+setInterval(()=>{if(S.unlocked&&!document.hidden)reload()},120000);
+})();
+</script>
+</body>
+</html>

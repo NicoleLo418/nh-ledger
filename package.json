@@ -1,0 +1,6 @@
+{
+  "name": "nh-ledger",
+  "private": true,
+  "type": "module",
+  "scripts": { "test": "node --test worker/test/*.test.js", "dev": "node dev-server.mjs" }
+}
