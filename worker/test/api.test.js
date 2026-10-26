@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { handle, updatePrices } from '../src/app.js';
 import { FakeSheets } from '../src/sheets.js';
 import { pinHash } from '../src/core.js';
-import { parseTwse, parseTpex, rocToIso } from '../src/prices.js';
+import { parseTwse, parseTpex, parseTpexOpenApi, rocToIso, fetchCloses } from '../src/prices.js';
 
 const ORIGIN = 'https://nicole.github.io';
 const CH = '2000000001';
@@ -256,4 +256,19 @@ test('健康檢查：公開但不含任何帳本資料、不讀試算表', async
   assert.equal(read, 0);
   for (const s of ['U-nicole', 'Nicole', 'HSIAO', '0050', '15000', '密碼']) assert.ok(!txt.includes(s), s);
   assert.deepEqual(JSON.parse(txt).config, { sheet: false, pin: true, line: true });
+});
+
+test('收盤價：櫃買中心 OpenAPI 解析；OpenAPI 失敗時改用網站資料', async () => {
+  const rows = [{ Date: '1151026', SecuritiesCompanyCode: '6488', CompanyName: '環球晶', Close: '412.50' }, { Date: '1151026', SecuritiesCompanyCode: '1234', CompanyName: 'x', Close: '---' }];
+  assert.deepEqual(parseTpexOpenApi(rows), { 6488: { close: 412.5, date: '2026-10-26', market: '上櫃', name: '環球晶' } });
+  assert.throws(() => parseTpexOpenApi([{ foo: 1 }]));
+  const okOpenApi = async (url) => url.includes('twse') ? new Response('[]') : url.includes('openapi') ? new Response(JSON.stringify(rows)) : new Response('', { status: 500 });
+  assert.equal((await fetchCloses(okOpenApi)).closes['6488'].close, 412.5);
+  const fallback = async (url) => url.includes('twse') ? new Response('[]') : url.includes('openapi') ? new Response('', { status: 403 })
+    : new Response(JSON.stringify({ date: '20261026', tables: [{ fields: ['代號', '名稱', '收盤'], data: [['6488', '環球晶', '410']] }] }));
+  const r = await fetchCloses(fallback);
+  assert.equal(r.closes['6488'].close, 410);
+  assert.deepEqual(r.errors, []);
+  const bothFail = async (url) => url.includes('twse') ? new Response('[]') : new Response('', { status: 403 });
+  assert.equal((await fetchCloses(bothFail)).errors.length, 1);
 });

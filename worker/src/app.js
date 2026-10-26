@@ -78,7 +78,7 @@ let sourceCache = null;
 async function sourceCheck(fetchImpl, nowMs) {
   if (sourceCache && nowMs - sourceCache.at < 10 * 60 * 1000) return sourceCache.value;
   const { closes, errors } = await fetchCloses(fetchImpl);
-  const value = { count: Object.keys(closes).length, sample: closes['0050'] || null, otcSample: closes['00679B'] || closes['6488'] || null, errors };
+  const value = { count: Object.keys(closes).length, otcCount: Object.values(closes).filter((c) => c.market === '上櫃').length, sample: closes['0050'] || null, otcSample: closes['00679B'] || closes['6488'] || null, errors };
   sourceCache = { at: nowMs, value };
   return value;
 }
