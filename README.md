@@ -37,4 +37,4 @@ node scripts/preflight.mjs  # 上線前檢查
 2. 全部通過才部署 Worker 與網頁
 
 需要的 GitHub Secrets：`CLOUDFLARE_API_TOKEN`、`CLOUDFLARE_ACCOUNT_ID`
-需要的 Cloudflare Worker secrets：`GOOGLE_SA_EMAIL`、`GOOGLE_SA_KEY`、`PIN_PEPPER`
+需要的 Cloudflare Worker secrets：`GOOGLE_SA_JSON`（服務帳號金鑰整份 JSON）、`PIN_PEPPER`

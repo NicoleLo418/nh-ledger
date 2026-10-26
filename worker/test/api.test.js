@@ -288,3 +288,17 @@ test('收盤價：行情系統補上櫃股票與較新的價格，只查持有�
   assert.equal(r.closes['2330'].close, 2385);       // 其他股票照用證交所
   assert.ok(decodeURIComponent(misUrl).includes('tse_0050.tw|otc_0050.tw|tse_6488.tw|otc_6488.tw'));
 });
+
+test('服務帳號：整份 JSON 或分開設定都能用，並能簽出 JWT', async () => {
+  const { serviceAccount, googleJwt } = await import('../src/sheets.js');
+  const { generateKeyPairSync } = await import('node:crypto');
+  const { privateKey } = generateKeyPairSync('rsa', { modulusLength: 2048 });
+  const pem = privateKey.export({ type: 'pkcs8', format: 'pem' });
+  const json = JSON.stringify({ type: 'service_account', client_email: 'nh@x.iam.gserviceaccount.com', private_key: pem });
+  const sa = serviceAccount({ GOOGLE_SA_JSON: json });
+  assert.equal(sa.email, 'nh@x.iam.gserviceaccount.com');
+  const jwt = await googleJwt(sa.email, sa.key, 'scope', 1000);
+  assert.equal(jwt.split('.').length, 3);
+  assert.equal(serviceAccount({ GOOGLE_SA_EMAIL: 'a', GOOGLE_SA_KEY: 'b' }).email, 'a');
+  assert.throws(() => serviceAccount({ GOOGLE_SA_JSON: '{"client_email":"a"' }));
+});

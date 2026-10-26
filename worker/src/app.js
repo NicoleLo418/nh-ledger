@@ -95,7 +95,7 @@ export async function handle(req, env, deps) {
   const url = new URL(req.url), path = url.pathname;
   if (path === '/health') {
     // 公開的健康檢查：只回報設定是否齊全與公開的市場資料狀態，不含任何帳本資料
-    const body = { ok: true, config: { sheet: !!(env.GOOGLE_SA_EMAIL && env.GOOGLE_SA_KEY && env.SHEET_ID), pin: !!env.PIN_PEPPER, line: /^\d+$/.test(env.LINE_CHANNEL_ID || '') } };
+    const body = { ok: true, config: { sheet: !!((env.GOOGLE_SA_JSON || (env.GOOGLE_SA_EMAIL && env.GOOGLE_SA_KEY)) && env.SHEET_ID), pin: !!env.PIN_PEPPER, line: /^\d+$/.test(env.LINE_CHANNEL_ID || '') } };
     if (url.searchParams.get('sources') === '1') body.sources = await sourceCheck(fetchImpl, now());
     return json(200, body, H);
   }

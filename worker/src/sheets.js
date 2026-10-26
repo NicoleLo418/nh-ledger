@@ -12,6 +12,16 @@ export async function googleJwt(email, keyPem, scope, nowSec) {
   return `${unsigned}.${b64url(new Uint8Array(sig))}`;
 }
 
+// 服務帳號：可以整份 JSON 放進 GOOGLE_SA_JSON，或分開放 GOOGLE_SA_EMAIL / GOOGLE_SA_KEY
+export function serviceAccount(env) {
+  if (env.GOOGLE_SA_JSON) {
+    let j; try { j = JSON.parse(env.GOOGLE_SA_JSON); } catch { throw new Error('GOOGLE_SA_JSON 不是完整的 JSON'); }
+    if (!j.client_email || !j.private_key) throw new Error('GOOGLE_SA_JSON 缺少 client_email 或 private_key');
+    return { email: j.client_email, key: j.private_key };
+  }
+  return { email: env.GOOGLE_SA_EMAIL, key: env.GOOGLE_SA_KEY };
+}
+
 const q = (name) => `'${name}'`;
 const tokenCache = { value: '', exp: 0 };
 
@@ -21,7 +31,8 @@ export class GoogleSheets {
   async token() {
     const now = Math.floor(Date.now() / 1000);
     if (tokenCache.value && tokenCache.exp - 60 > now) return tokenCache.value;
-    const jwt = await googleJwt(this.env.GOOGLE_SA_EMAIL, this.env.GOOGLE_SA_KEY, 'https://www.googleapis.com/auth/spreadsheets', now);
+    const sa = serviceAccount(this.env);
+    const jwt = await googleJwt(sa.email, sa.key, 'https://www.googleapis.com/auth/spreadsheets', now);
     const res = await this.fetch('https://oauth2.googleapis.com/token', { method: 'POST', headers: { 'content-type': 'application/x-www-form-urlencoded' }, body: `grant_type=${encodeURIComponent('urn:ietf:params:oauth:grant-type:jwt-bearer')}&assertion=${jwt}` });
     if (!res.ok) throw new Error(`Google 登入失敗（${res.status}）`);
     const j = await res.json();

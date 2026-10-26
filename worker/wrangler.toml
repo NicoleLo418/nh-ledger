@@ -15,4 +15,4 @@ ALLOWED_ORIGIN = "https://nicolelo418.github.io"
 SHEET_ID = "1dKEzo4sEOB6jZSMVmSQm6ReHXW1F9ocIjzBa4W3zlTs"
 LINE_CHANNEL_ID = "LINE_CHANNEL_ID"
 
-# Secrets (set in Cloudflare, never committed): GOOGLE_SA_EMAIL, GOOGLE_SA_KEY, PIN_PEPPER
+# Secrets (set in Cloudflare, never committed): GOOGLE_SA_JSON, PIN_PEPPER
