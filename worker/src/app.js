@@ -74,6 +74,16 @@ async function setSetting(sheets, D, key, value) {
 
 const strip = (o) => { const c = { ...o }; delete c._row; return c; };
 
+// 只回報錯誤類別與狀態碼，不回傳 Google 原始訊息（可能含帳號資訊）
+export function safeSheetError(e) {
+  const m = String((e && e.message) || e);
+  if (m.startsWith('GOOGLE_SA_JSON') || m.startsWith('服務帳號金鑰')) return m.slice(0, 80);
+  const g = m.match(/^Google 登入失敗（[^）]*）/); if (g) return g[0];
+  const t = m.match(/^試算表存取失敗（(\d+)）/);
+  if (t) return t[1] === '403' ? '試算表存取失敗（403：沒共用給服務帳號，或 Sheets API 沒啟用）' : t[1] === '404' ? '試算表存取失敗（404：找不到試算表）' : t[1] === '400' ? '試算表存取失敗（400：分頁名稱不對）' : `試算表存取失敗（${t[1]}）`;
+  return '連線失敗：' + m.replace(/[\w.-]+@[\w.-]+/g, '…').slice(0, 60);
+}
+
 let sourceCache = null;
 async function sourceCheck(fetchImpl, nowMs) {
   if (sourceCache && nowMs - sourceCache.at < 10 * 60 * 1000) return sourceCache.value;
@@ -100,7 +110,7 @@ export async function handle(req, env, deps) {
       body.sources = await sourceCheck(fetchImpl, now());
       // 只回報連得上、各分頁是否存在，不回傳任何內容
       try { const all = await sheets.readAll(); body.sheetOk = true; body.tabsOk = !!(all && all.trades && all.cash && all.members && all.settings && all.prices && all.audit); }
-      catch (e) { body.sheetOk = false; body.sheetError = /40[13]/.test(String(e.message)) ? '沒有權限（試算表沒共用給服務帳號？）' : '連線失敗'; }
+      catch (e) { body.sheetOk = false; body.sheetError = safeSheetError(e); }
     }
     return json(200, body, H);
   }

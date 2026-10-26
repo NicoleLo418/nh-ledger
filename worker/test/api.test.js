@@ -302,3 +302,10 @@ test('服務帳號：整份 JSON 或分開設定都能用，並能簽出 JWT', a
   assert.equal(serviceAccount({ GOOGLE_SA_EMAIL: 'a', GOOGLE_SA_KEY: 'b' }).email, 'a');
   assert.throws(() => serviceAccount({ GOOGLE_SA_JSON: '{"client_email":"a"' }));
 });
+
+test('健康檢查錯誤訊息：只回報類別，不洩漏帳號資訊', async () => {
+  const { safeSheetError } = await import('../src/app.js');
+  assert.equal(safeSheetError(new Error('試算表存取失敗（403）：{"error":"x nh@p.iam.gserviceaccount.com"}')), '試算表存取失敗（403：沒共用給服務帳號，或 Sheets API 沒啟用）');
+  assert.equal(safeSheetError(new Error('Google 登入失敗（400 invalid_grant）')), 'Google 登入失敗（400 invalid_grant）');
+  assert.ok(!safeSheetError(new Error('boom nh@p.iam.gserviceaccount.com')).includes('@'));
+});

@@ -32,9 +32,11 @@ export class GoogleSheets {
     const now = Math.floor(Date.now() / 1000);
     if (tokenCache.value && tokenCache.exp - 60 > now) return tokenCache.value;
     const sa = serviceAccount(this.env);
-    const jwt = await googleJwt(sa.email, sa.key, 'https://www.googleapis.com/auth/spreadsheets', now);
+    let jwt;
+    try { jwt = await googleJwt(sa.email, sa.key, 'https://www.googleapis.com/auth/spreadsheets', now); }
+    catch (e) { throw new Error('服務帳號金鑰格式錯誤（private_key 讀不出來）'); }
     const res = await this.fetch('https://oauth2.googleapis.com/token', { method: 'POST', headers: { 'content-type': 'application/x-www-form-urlencoded' }, body: `grant_type=${encodeURIComponent('urn:ietf:params:oauth:grant-type:jwt-bearer')}&assertion=${jwt}` });
-    if (!res.ok) throw new Error(`Google 登入失敗（${res.status}）`);
+    if (!res.ok) { let code = ''; try { code = (await res.json()).error || ''; } catch {} throw new Error(`Google 登入失敗（${res.status} ${String(code).slice(0, 40)}）`); }
     const j = await res.json();
     tokenCache.value = j.access_token; tokenCache.exp = now + (j.expires_in || 3600);
     return tokenCache.value;
