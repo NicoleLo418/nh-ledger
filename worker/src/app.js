@@ -96,7 +96,12 @@ export async function handle(req, env, deps) {
   if (path === '/health') {
     // 公開的健康檢查：只回報設定是否齊全與公開的市場資料狀態，不含任何帳本資料
     const body = { ok: true, config: { sheet: !!((env.GOOGLE_SA_JSON || (env.GOOGLE_SA_EMAIL && env.GOOGLE_SA_KEY)) && env.SHEET_ID), pin: !!env.PIN_PEPPER, line: /^\d+$/.test(env.LINE_CHANNEL_ID || '') } };
-    if (url.searchParams.get('sources') === '1') body.sources = await sourceCheck(fetchImpl, now());
+    if (url.searchParams.get('sources') === '1') {
+      body.sources = await sourceCheck(fetchImpl, now());
+      // 只回報連得上、各分頁是否存在，不回傳任何內容
+      try { const all = await sheets.readAll(); body.sheetOk = true; body.tabsOk = !!(all && all.trades && all.cash && all.members && all.settings && all.prices && all.audit); }
+      catch (e) { body.sheetOk = false; body.sheetError = /40[13]/.test(String(e.message)) ? '沒有權限（試算表沒共用給服務帳號？）' : '連線失敗'; }
+    }
     return json(200, body, H);
   }
   if (!path.startsWith('/api/')) return json(404, { error: 'not_found' }, H);
