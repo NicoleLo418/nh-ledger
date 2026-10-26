@@ -74,6 +74,15 @@ async function setSetting(sheets, D, key, value) {
 
 const strip = (o) => { const c = { ...o }; delete c._row; return c; };
 
+let sourceCache = null;
+async function sourceCheck(fetchImpl, nowMs) {
+  if (sourceCache && nowMs - sourceCache.at < 10 * 60 * 1000) return sourceCache.value;
+  const { closes, errors } = await fetchCloses(fetchImpl);
+  const value = { count: Object.keys(closes).length, sample: closes['0050'] || null, otcSample: closes['00679B'] || closes['6488'] || null, errors };
+  sourceCache = { at: nowMs, value };
+  return value;
+}
+
 export async function handle(req, env, deps) {
   const { sheets, fetchImpl = fetch, now = () => Date.now(), waitUntil = (p) => p } = deps;
   const origin = req.headers.get('origin') || '';
@@ -84,7 +93,12 @@ export async function handle(req, env, deps) {
   if (origin && origin !== env.ALLOWED_ORIGIN) return json(403, { error: 'origin', message: '不接受這個網站的請求' }, H);
 
   const url = new URL(req.url), path = url.pathname;
-  if (path === '/health') return json(200, { ok: true }, H);
+  if (path === '/health') {
+    // 公開的健康檢查：只回報設定是否齊全與公開的市場資料狀態，不含任何帳本資料
+    const body = { ok: true, config: { sheet: !!(env.GOOGLE_SA_EMAIL && env.GOOGLE_SA_KEY && env.SHEET_ID), pin: !!env.PIN_PEPPER, line: /^\d+$/.test(env.LINE_CHANNEL_ID || '') } };
+    if (url.searchParams.get('sources') === '1') body.sources = await sourceCheck(fetchImpl, now());
+    return json(200, body, H);
+  }
   if (!path.startsWith('/api/')) return json(404, { error: 'not_found' }, H);
 
   try {

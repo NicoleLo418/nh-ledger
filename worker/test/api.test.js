@@ -246,3 +246,14 @@ test('收盤價：排程只更新曾經交易過的股票，並重新產生報�
   assert.equal(s.tabs.prices[2][0], '0050');
   assert.equal(Object.fromEntries(s.reports.overview.slice(1))['持股市值'], 21380);
 });
+
+test('健康檢查：公開但不含任何帳本資料、不讀試算表', async () => {
+  const sheets = await seed();
+  let read = 0; const orig = sheets.readAll.bind(sheets); sheets.readAll = async () => { read++; return orig(); };
+  const res = await handle(new Request('https://w/health'), env(), { sheets, fetchImpl: lineFetch, now: () => NOW });
+  assert.equal(res.status, 200);
+  const txt = await res.text();
+  assert.equal(read, 0);
+  for (const s of ['U-nicole', 'Nicole', 'HSIAO', '0050', '15000', '密碼']) assert.ok(!txt.includes(s), s);
+  assert.deepEqual(JSON.parse(txt).config, { sheet: false, pin: true, line: true });
+});
