@@ -71,9 +71,9 @@ jobs:
           t=$(grep -o "<title>[^<]*</title>" page.html 2>/dev/null)
           echo "::notice title=網頁::HTTP $p $t"
           [ "$p" = "200" ] || fail=1
-          h=$(curl -s -m 60 -w " HTTP %{http_code}" "https://nh-ledger-api.nicole-n.workers.dev/health?sources=1" || echo "curl錯誤$?")
+          h=$(curl -s -m 60 -w " HTTP %{http_code}" "https://nh-ledger-api.nicole-nh.workers.dev/health?sources=1" || echo "curl錯誤$?")
           echo "::notice title=後端健康檢查::$h"
-          c=$(curl -s -o /dev/null -w "%{http_code}" https://nh-ledger-api.nicole-n.workers.dev/api/ledger || echo "curl錯誤$?")
+          c=$(curl -s -o /dev/null -w "%{http_code}" https://nh-ledger-api.nicole-nh.workers.dev/api/ledger || echo "curl錯誤$?")
           echo "::notice title=未登入讀帳本（應為401）::$c"
           [ "$c" = "401" ] || fail=1
           exit $fail
